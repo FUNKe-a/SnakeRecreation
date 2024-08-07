@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\godot_projects\\SnakeRecreation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\levels\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\levels\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 307,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Menu.cs",
+              "RelativeDocumentMoniker": "Scenes\\Levels\\Menu.cs",
+              "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Menu.cs",
+              "RelativeToolTip": "Scenes\\Levels\\Menu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T21:51:16.455Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

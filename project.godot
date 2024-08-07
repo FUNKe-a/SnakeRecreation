@@ -11,13 +11,33 @@ config_version=5
 [application]
 
 config/name="Snake Recreation"
-config/features=PackedStringArray("4.2", "Mobile")
+run/main_scene="res://Scenes/Levels/Menu.tscn"
+config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=960
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
 project/assembly_name="Snake Recreation"
 
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="items"
+2d_physics/layer_3="player"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

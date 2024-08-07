@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bmuhy2iut6a44"
+path="res://.godot/imported/joystix monospace.otf-554ef5c8feb7221c596a3ed4d88bacdc.fontdata"
+
+[deps]
+
+source_file="res://Graphics/Fonts/joystix monospace.otf"
+dest_files=["res://.godot/imported/joystix monospace.otf-554ef5c8feb7221c596a3ed4d88bacdc.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=0
+subpixel_positioning=0
+oversampling=10.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
