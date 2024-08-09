@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5rox2kogac5u"]
+[gd_scene load_steps=6 format=3 uid="uid://b5rox2kogac5u"]
 
+[ext_resource type="Script" path="res://Scenes/Levels/Game.cs" id="1_k6kkb"]
 [ext_resource type="Texture2D" uid="uid://b4lebf0psm1vg" path="res://Graphics/floor tiles/floor sheet.png" id="1_o2cs2"]
 [ext_resource type="PackedScene" uid="uid://dtkb6qs3x1jr1" path="res://Scenes/Player/player.tscn" id="2_h728h"]
 
@@ -19,6 +20,8 @@ physics_layer_0/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_cp4qn")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_k6kkb")
+MenuScene = "res://Scenes/Levels/Menu.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i3kwn")
@@ -27,3 +30,5 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 
 [node name="Player" parent="." instance=ExtResource("2_h728h")]
 position = Vector2(328, 248)
+
+[connection signal="Died" from="Player" to="." method="PlayerDied"]

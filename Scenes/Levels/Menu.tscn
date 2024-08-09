@@ -6,6 +6,7 @@
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_ajgne")
+PlayScene = "res://Scenes/Levels/Game.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lwnh0")

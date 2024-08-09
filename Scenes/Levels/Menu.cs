@@ -3,7 +3,8 @@ using Godot;
 public partial class Menu : Node2D
 {
     OptionButton _options;
-    public readonly PackedScene GameLevel = ResourceLoader.Load<PackedScene>("res://Scenes/Levels/Game.tscn");
+    [Export(PropertyHint.File)]
+    string PlayScene = string.Empty;
 
     public override void _Ready()
     {
@@ -17,7 +18,7 @@ public partial class Menu : Node2D
     }
     private void PlayButtonPressed()
     {
-        GetTree().ChangeSceneToPacked(GameLevel);
+        GetTree().ChangeSceneToFile(PlayScene);
     }
     private void ExitButtonPressed()
     {
