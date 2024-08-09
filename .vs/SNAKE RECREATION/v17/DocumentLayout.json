@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\godot_projects\\SnakeRecreation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\Player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\Player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\levels\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,8 +38,7 @@
               "RelativeToolTip": "Scenes\\Player\\snake_body_part.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T23:06:51.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T23:06:51.958Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\player.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
               "RelativeToolTip": "Scenes\\Player\\player.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAqwCwAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T23:06:33.922Z",
               "EditorCaption": ""
@@ -64,8 +63,7 @@
               "RelativeToolTip": "Scenes\\Levels\\Menu.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T21:51:16.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T21:51:16.455Z"
             }
           ]
         }

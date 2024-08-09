@@ -1,55 +1,44 @@
 using Godot;
 using System;
+using static Godot.Control;
 
 public partial class player : CharacterBody2D
 {
     [Export]
     public int Speed { get; set; } = 200;
 
-    public Vector2 _direction;
+
+    int _tileSize = 16;
+    Vector2 _nextPosition;
+
+    Vector2 _direction;
+    bool _isMoving;
 
     public player()
     {
         _direction = new Vector2(0, -1);
+        _isMoving = false;
+    }
+    public override void _Ready()
+    {
+        _nextPosition = (_direction * _tileSize) + GlobalPosition;
     }
     public override void _Input(InputEvent @event)
     {
-        int DegreesToRotate = 999;
-
-        if (@event.IsActionPressed("up"))
-        {
-            DegreesToRotate = 0;
-            _direction = new Vector2(0, -1);
-        }
-        if (@event.IsActionPressed("down"))
-        {
-            DegreesToRotate = 180;
-            _direction = new Vector2(0, 1);
-        }
-        if (@event.IsActionPressed("left"))
-        {
-            DegreesToRotate = -90;
-            _direction = new Vector2(-1, 0);
-        }
-        if (@event.IsActionPressed("right"))
-        {
-            DegreesToRotate = 90;
-            _direction = new Vector2(1, 0);
-        }
-
-        if (DegreesToRotate != 999 && Math.Abs((int)RotationDegrees - DegreesToRotate) != 180)
-            RotationDegrees = DegreesToRotate;
-    }
-
-    public override void _Process(double delta)
-    {
-        Velocity = _direction * Speed;
-        MoveAndSlide();
+        if (!_isMoving)
+            _direction = Input.GetVector("left", "right", "up", "down") == new Vector2(0, 0) ? Input.GetVector("left", "right", "up", "down") : _direction;
     }
 
     private void DirectionTimerTimeout()
     {
-        //_direction = (GetNode<RayCast2D>("RayCast2D").Position - GetNode<RayCast2D>("RayCast2D").TargetPosition).Normalized();
-        //GD.Print(_direction);
+        if (!GetNode<RayCast2D>("RayCast2D").IsColliding())
+        {
+            _isMoving = true;
+            var tween = CreateTween();
+            tween.TweenProperty(this, "position", _nextPosition, 0.5);
+            tween.TweenCallback(Callable.From(() => _isMoving = false));
+            GD.Print(_direction);
+            _nextPosition = (_direction * _tileSize) + GlobalPosition;
+        }
     }
 }

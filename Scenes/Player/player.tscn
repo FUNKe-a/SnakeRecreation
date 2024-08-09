@@ -7,7 +7,6 @@
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(35, 33)
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
@@ -21,12 +20,12 @@ texture = ExtResource("1_uq4tl")
 shape = SubResource("RectangleShape2D_mvfq5")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -8)
 rotation = 3.14159
-target_position = Vector2(0, 8)
+target_position = Vector2(-4.05629e-05, 16)
 collision_mask = 3
 
 [node name="DirectionTimer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]
