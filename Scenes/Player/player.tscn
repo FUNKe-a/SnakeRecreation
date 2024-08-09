@@ -25,7 +25,7 @@ target_position = Vector2(-4.05629e-05, 16)
 collision_mask = 3
 
 [node name="DirectionTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.6
 autostart = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]

@@ -9,36 +9,43 @@ public partial class player : CharacterBody2D
 
 
     int _tileSize = 16;
-    Vector2 _nextPosition;
 
+    Vector2 _startPosition;
+    Vector2 _nextPosition;
     Vector2 _direction;
-    bool _isMoving;
 
     public player()
     {
         _direction = new Vector2(0, -1);
-        _isMoving = false;
     }
     public override void _Ready()
     {
-        _nextPosition = (_direction * _tileSize) + GlobalPosition;
+        _startPosition = GlobalPosition;
+        _nextPosition = GlobalPosition;
     }
     public override void _Input(InputEvent @event)
     {
-        if (!_isMoving)
-            _direction = Input.GetVector("left", "right", "up", "down") == new Vector2(0, 0) ? Input.GetVector("left", "right", "up", "down") : _direction;
+        if (!(@event is InputEventMouse))
+        {
+            Vector2 TempDirecton = Input.GetVector("left", "right", "up", "down");
+
+            if (TempDirecton != Vector2.Zero)
+                _direction = TempDirecton;
+        }
     }
 
     private void DirectionTimerTimeout()
     {
         if (!GetNode<RayCast2D>("RayCast2D").IsColliding())
         {
-            _isMoving = true;
+            _startPosition = _nextPosition;
+            _nextPosition = (_direction * _tileSize) + _startPosition;
+
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", _nextPosition, 0.5);
-            tween.TweenCallback(Callable.From(() => _isMoving = false));
-            GD.Print(_direction);
-            _nextPosition = (_direction * _tileSize) + GlobalPosition;
+            var rot = _startPosition.AngleToPoint(_nextPosition) + Mathf.DegToRad(90);
+
+            tween.TweenProperty(this, "rotation", rot, 0.25);
+            tween.TweenProperty(this, "position", _nextPosition, 0.25);
         }
     }
 }
