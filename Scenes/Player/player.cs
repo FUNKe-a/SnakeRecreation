@@ -16,14 +16,15 @@ public partial class player : CharacterBody2D
     Vector2 _nextPosition;
     Vector2 _direction;
 
-    public player()
-    {
-        _direction = new Vector2(0, -1);
-    }
     public override void _Ready()
     {
-        _startPosition = GlobalPosition;
+        //get the direction that the snake is starting in
+        var GlobalRaycastTarget = GlobalPosition + GetNode<RayCast2D>("RayCast2D").TargetPosition;
+        _direction = GlobalPosition.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
+        _direction.Y *= -1;
+
         _nextPosition = GlobalPosition;
+        _startPosition = GlobalPosition;
     }
     public override void _Input(InputEvent @event)
     {
@@ -38,13 +39,23 @@ public partial class player : CharacterBody2D
 
     private void DirectionTimerTimeout()
     {
+
+        var tween = CreateTween();
+        var CurrentDirection = _startPosition.DirectionTo(_nextPosition);
+
         _startPosition = _nextPosition;
         _nextPosition = (_direction * _tileSize) + _startPosition;
 
-        var tween = CreateTween();
-        var rot = _startPosition.AngleToPoint(_nextPosition) + Mathf.DegToRad(90);
+        var angle = CurrentDirection.AngleTo(_direction);
 
-        tween.TweenProperty(this, "rotation", rot, 0.25);
+        if (Math.Abs(angle) > Mathf.DegToRad(90))
+        {
+            angle = 0;
+            _direction = CurrentDirection;
+            _nextPosition = (CurrentDirection * _tileSize) + _startPosition;
+        }
+
+        tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
         tween.TweenProperty(this, "position", _nextPosition, 0.25);
 
         if (GetNode<RayCast2D>("RayCast2D").IsColliding())

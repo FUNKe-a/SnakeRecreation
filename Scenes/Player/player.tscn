@@ -21,11 +21,11 @@ shape = SubResource("RectangleShape2D_mvfq5")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = 3.14159
-target_position = Vector2(-4.05629e-05, 16)
+target_position = Vector2(0, 16)
 collision_mask = 11
 
 [node name="DirectionTimer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]
