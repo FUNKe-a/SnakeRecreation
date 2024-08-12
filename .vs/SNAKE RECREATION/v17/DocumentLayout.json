@@ -38,8 +38,7 @@
               "RelativeToolTip": "Scenes\\Levels\\Game.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T22:37:32.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-09T22:37:32.612Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\player.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
               "RelativeToolTip": "Scenes\\Player\\player.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAC0AAAAnAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAkwDYAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T23:06:33.922Z",
               "EditorCaption": ""

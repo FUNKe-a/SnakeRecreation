@@ -18,13 +18,10 @@ public partial class player : CharacterBody2D
 
     public override void _Ready()
     {
-        //get the direction that the snake is starting in
-        var GlobalRaycastTarget = GlobalPosition + GetNode<RayCast2D>("RayCast2D").TargetPosition;
-        _direction = GlobalPosition.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
-        _direction.Y *= -1;
+        _direction = Vector2.Zero;
 
-        _nextPosition = GlobalPosition;
         _startPosition = GlobalPosition;
+        _nextPosition = GlobalPosition;
     }
     public override void _Input(InputEvent @event)
     {
@@ -39,9 +36,16 @@ public partial class player : CharacterBody2D
 
     private void DirectionTimerTimeout()
     {
-
         var tween = CreateTween();
         var CurrentDirection = _startPosition.DirectionTo(_nextPosition);
+
+        //if game scene is starting finds proper player direction and prevents starting input
+        if (CurrentDirection == Vector2.Zero)
+        {
+            var GlobalRaycastTarget = GlobalPosition + GetNode<RayCast2D>("RayCast2D").TargetPosition;
+            _direction = GlobalPosition.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
+            _direction.Y *= -1;
+        }
 
         _startPosition = _nextPosition;
         _nextPosition = (_direction * _tileSize) + _startPosition;
