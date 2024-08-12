@@ -27,10 +27,13 @@ public partial class player : CharacterBody2D
     {
         if (!(@event is InputEventMouse))
         {
-            Vector2 TempDirecton = Input.GetVector("left", "right", "up", "down");
+            Vector2 TempDirection = Input.GetVector("left", "right", "up", "down");
 
-            if (TempDirecton != Vector2.Zero)
-                _direction = TempDirecton;
+            if (TempDirection.X != 0 && TempDirection.Y != 0)
+                TempDirection = Vector2.Zero;
+
+            if (TempDirection != Vector2.Zero)
+                _direction = TempDirection;
         }
     }
 
