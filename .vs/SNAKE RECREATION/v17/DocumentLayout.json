@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\godot_projects\\SnakeRecreation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\levels\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\levels\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\levels\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\levels\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B9EBF59-1F1A-40AD-8516-440C44ECA1CD}|Snake Recreation.csproj|solutionrelative:scenes\\player\\snake_body_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,40 +26,56 @@
       "DocumentGroups": [
         {
           "DockedHeight": 307,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "player.cs",
+              "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
+              "RelativeDocumentMoniker": "Scenes\\Player\\player.cs",
+              "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
+              "RelativeToolTip": "Scenes\\Player\\player.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAABQAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T23:06:33.922Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "snake_body_part.cs",
+              "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\snake_body_part.cs",
+              "RelativeDocumentMoniker": "Scenes\\Player\\snake_body_part.cs",
+              "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\snake_body_part.cs",
+              "RelativeToolTip": "Scenes\\Player\\snake_body_part.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T21:12:31.836Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Game.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Game.cs",
               "RelativeDocumentMoniker": "Scenes\\Levels\\Game.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Game.cs",
               "RelativeToolTip": "Scenes\\Levels\\Game.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAADQAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T22:37:32.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "player.cs",
-              "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
-              "RelativeDocumentMoniker": "Scenes\\Player\\player.cs",
-              "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\player.cs",
-              "RelativeToolTip": "Scenes\\Player\\player.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAmwCoAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T23:06:33.922Z",
+              "WhenOpened": "2024-08-09T22:37:32.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Menu.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Menu.cs",
               "RelativeDocumentMoniker": "Scenes\\Levels\\Menu.cs",
@@ -63,7 +83,8 @@
               "RelativeToolTip": "Scenes\\Levels\\Menu.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T21:51:16.455Z"
+              "WhenOpened": "2024-08-07T21:51:16.455Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -16,10 +16,18 @@ public partial class player : CharacterBody2D
     Vector2 _nextPosition;
     Vector2 _direction;
 
-    public override void _Ready()
+    bool _obstacleInFront;
+
+    PackedScene BodyPart = GD.Load<PackedScene>("res://Scenes/Player/snake_body_part.tscn");
+
+    public player()
     {
         _direction = Vector2.Zero;
+        _obstacleInFront = false;
+    }
 
+    public override void _Ready()
+    {
         _startPosition = GlobalPosition;
         _nextPosition = GlobalPosition;
     }
@@ -42,6 +50,13 @@ public partial class player : CharacterBody2D
         var tween = CreateTween();
         var CurrentDirection = _startPosition.DirectionTo(_nextPosition);
 
+        if (GetNode<RayCast2D>("RayCast2D").IsColliding())
+            _obstacleInFront = true;
+
+        if (_obstacleInFront && CurrentDirection == _direction)
+            EmitSignal(SignalName.Died);
+        else _obstacleInFront = false;
+
         //if game scene is starting finds proper player direction and prevents starting input
         if (CurrentDirection == Vector2.Zero)
         {
@@ -50,6 +65,7 @@ public partial class player : CharacterBody2D
             _direction.Y *= -1;
         }
 
+        //calculate the current and the next position
         _startPosition = _nextPosition;
         _nextPosition = (_direction * _tileSize) + _startPosition;
 
@@ -64,8 +80,5 @@ public partial class player : CharacterBody2D
 
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
         tween.TweenProperty(this, "position", _nextPosition, 0.25);
-
-        if (GetNode<RayCast2D>("RayCast2D").IsColliding())
-            EmitSignal(SignalName.Died);
     }
 }
