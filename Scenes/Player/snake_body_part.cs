@@ -16,6 +16,4 @@ public partial class snake_body_part : CharacterBody2D
         _startPosition = StartPosition;
         _nextPosition = Vector2.Zero;
     }
-
-
 }

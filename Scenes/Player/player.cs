@@ -8,6 +8,8 @@ public partial class player : CharacterBody2D
     public int Speed { get; set; } = 200;
 
     [Signal]
+    public delegate void AppleEatenEventHandler();
+    [Signal]
     public delegate void DiedEventHandler();
 
     int _tileSize = 16;
@@ -43,6 +45,11 @@ public partial class player : CharacterBody2D
             if (TempDirection != Vector2.Zero)
                 _direction = TempDirection;
         }
+    }
+
+    public void EatApple()
+    {
+        EmitSignal(SignalName.AppleEaten);
     }
 
     private void DirectionTimerTimeout()

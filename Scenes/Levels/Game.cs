@@ -9,19 +9,9 @@ public partial class Game : Node2D
 
     PackedScene Apple = GD.Load<PackedScene>("res://Scenes/consumables/apple.tscn");
 
-    public Game()
-    {
-
-    }
-
     public override void _Ready()
     {
         CreateNewApple();
-    }
-
-    public override void _Process(double delta)
-    {
-        
     }
 
     private void PlayerDied()
@@ -33,18 +23,14 @@ public partial class Game : Node2D
         var AppleInst = Apple.Instantiate() as Area2D;
         AppleInst.Position = RandomLocation();
         GetNode<Node2D>("Items").AddChild(AppleInst);
-        AppleInst.BodyEntered += OnBodyEntered;
     }
 
-    private void OnBodyEntered(Node2D body)
+    private void PlayerAppleEaten()
     {
-        if (body is player)
-        {
-            foreach (var child in GetNode<Node2D>("Items").GetChildren())
-                child.QueueFree();
+        foreach (var child in GetNode<Node2D>("Items").GetChildren())
+            child.QueueFree();
 
-            CallDeferred("CreateNewApple", null);
-        }
+        CallDeferred("CreateNewApple", null);
     }
 
     private Vector2I RandomLocation()

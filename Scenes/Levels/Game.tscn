@@ -33,4 +33,5 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 [node name="Player" parent="." instance=ExtResource("2_h728h")]
 position = Vector2(328, 232)
 
+[connection signal="AppleEaten" from="Player" to="." method="PlayerAppleEaten"]
 [connection signal="Died" from="Player" to="." method="PlayerDied"]
