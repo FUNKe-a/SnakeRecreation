@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dxjmxvhrcuqo7"]
+
+[ext_resource type="Texture2D" uid="uid://b4lebf0psm1vg" path="res://Graphics/floor tiles/floor sheet.png" id="1_rpv7g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cp4qn"]
+texture = ExtResource("1_rpv7g")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 4
+sources/0 = SubResource("TileSetAtlasSource_cp4qn")

@@ -12,8 +12,8 @@ public partial class Menu : Node2D
     }
     private void OptionButtonItemSelected(int index)
     {
-        var TempString = _options.GetItemText(index).Split('x');
-        var StartupSize = new Vector2I(int.Parse(TempString[0]), int.Parse(TempString[1]));
+        var TempString   = _options.GetItemText(index).Split('x');
+        var StartupSize  = new Vector2I(int.Parse(TempString[0]), int.Parse(TempString[1]));
         GetWindow().Size = StartupSize;
     }
     private void PlayButtonPressed()

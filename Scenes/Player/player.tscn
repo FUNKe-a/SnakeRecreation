@@ -1,31 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtkb6qs3x1jr1"]
+[gd_scene load_steps=5 format=3 uid="uid://b73jjcb54m3l4"]
 
-[ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Graphics/Snake/Snake head.png" id="1_uq4tl"]
-[ext_resource type="Script" path="res://Scenes/Player/player.cs" id="1_vrm6v"]
+[ext_resource type="Script" path="res://Scenes/Player/Player.cs" id="1_8wejx"]
+[ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Graphics/Snake/Snake head.png" id="1_ky0j0"]
+[ext_resource type="Script" path="res://Scenes/Player/Head.cs" id="2_xqghy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvfq5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4n2i"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Node2D"]
+script = ExtResource("1_8wejx")
+
+[node name="Head" type="CharacterBody2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_vrm6v")
-Speed = 100
+script = ExtResource("2_xqghy")
 
-[node name="SnakeHead" type="Sprite2D" parent="."]
-texture = ExtResource("1_uq4tl")
+[node name="SnakeHead" type="Sprite2D" parent="Head"]
+texture = ExtResource("1_ky0j0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mvfq5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("RectangleShape2D_t4n2i")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="Head"]
 rotation = 3.14159
 target_position = Vector2(0, 16)
 collision_mask = 9
+hit_from_inside = true
 
-[node name="DirectionTimer" type="Timer" parent="."]
+[node name="Bodyparts" type="Node2D" parent="."]
+
+[node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="PlayerMovementTimerTimeout"]
+[connection signal="timeout" from="MovementTimer" to="Head" method="HeadMovementTimerTimeout"]

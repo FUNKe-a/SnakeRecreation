@@ -20,7 +20,7 @@ public partial class Game : Node2D
     }
     private void CreateNewApple()
     {
-        var AppleInst = Apple.Instantiate() as Area2D;
+        var AppleInst = Apple.Instantiate<apple>();
         AppleInst.Position = RandomLocation();
         GetNode<Node2D>("Items").AddChild(AppleInst);
     }

@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\Player.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Player.cs",
               "RelativeToolTip": "Scenes\\Player\\Player.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCIAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAsCoLHtxk9wB4AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T22:05:54.779Z",
               "EditorCaption": ""
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\Head.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Head.cs",
               "RelativeToolTip": "Scenes\\Player\\Head.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwAUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAqwDMAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T21:18:54.217Z",
               "EditorCaption": ""
@@ -72,8 +72,7 @@
               "RelativeToolTip": "Scenes\\consumables\\apple.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T22:31:56.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T22:31:56.79Z"
             },
             {
               "$type": "Document",
@@ -83,7 +82,7 @@
               "RelativeDocumentMoniker": "Scenes\\Levels\\Game.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Game.cs",
               "RelativeToolTip": "Scenes\\Levels\\Game.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-09T22:37:32.612Z",
               "EditorCaption": ""
