@@ -40,11 +40,10 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\player.cs",
               "ToolTip": "D:\\godot_projects\\snake2\\Scenes\\Player\\player.cs",
               "RelativeToolTip": "Scenes\\Player\\player.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAwB0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswDwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T23:06:33.922Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -54,11 +53,10 @@
               "RelativeDocumentMoniker": "Scenes\\Player\\snake_body_part.cs",
               "ToolTip": "D:\\godot_projects\\snake2\\Scenes\\Player\\snake_body_part.cs",
               "RelativeToolTip": "Scenes\\Player\\snake_body_part.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-14T21:12:31.836Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -78,8 +76,7 @@
               "RelativeToolTip": "Scenes\\consumables\\apple.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T22:31:56.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T22:31:56.79Z"
             },
             {
               "$type": "Document",
@@ -89,7 +86,7 @@
               "RelativeDocumentMoniker": "Scenes\\Levels\\Game.cs",
               "ToolTip": "D:\\godot_projects\\snake2\\Scenes\\Levels\\Game.cs",
               "RelativeToolTip": "Scenes\\Levels\\Game.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-09T22:37:32.612Z",
               "EditorCaption": ""

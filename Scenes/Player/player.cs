@@ -24,14 +24,14 @@ public partial class player : CharacterBody2D
 
     public player()
     {
-        _direction = Vector2.Zero;
+        _direction       = Vector2.Zero;
         _obstacleInFront = false;
     }
 
     public override void _Ready()
     {
         _startPosition = GlobalPosition;
-        _nextPosition = GlobalPosition;
+        _nextPosition  = GlobalPosition;
     }
     public override void _Input(InputEvent @event)
     {
@@ -54,7 +54,7 @@ public partial class player : CharacterBody2D
 
     private void DirectionTimerTimeout()
     {
-        var tween = CreateTween();
+        var tween            = CreateTween();
         var CurrentDirection = _startPosition.DirectionTo(_nextPosition);
 
         if (GetNode<RayCast2D>("RayCast2D").IsColliding())
@@ -74,14 +74,14 @@ public partial class player : CharacterBody2D
 
         //calculate the current and the next position
         _startPosition = _nextPosition;
-        _nextPosition = (_direction * _tileSize) + _startPosition;
+        _nextPosition  = (_direction * _tileSize) + _startPosition;
 
         var angle = CurrentDirection.AngleTo(_direction);
 
         if (Math.Abs(angle) > Mathf.DegToRad(90))
         {
-            angle = 0;
-            _direction = CurrentDirection;
+            angle         = 0;
+            _direction    = CurrentDirection;
             _nextPosition = (CurrentDirection * _tileSize) + _startPosition;
         }
 
