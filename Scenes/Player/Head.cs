@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Transactions;
 using static Godot.Control;
 
 public partial class Head : CharacterBody2D
@@ -10,9 +11,8 @@ public partial class Head : CharacterBody2D
 
     int _tileSize = 16;
 
-    Vector2 _startPosition;
-    Vector2 _nextPosition;
     Vector2 _direction;
+    Vector2 _currentMove;
 
     public bool ObstacleInFront;
 
@@ -20,15 +20,17 @@ public partial class Head : CharacterBody2D
 
     public Head()
     {
-        _direction      = Vector2.Zero;
-        ObstacleInFront = false;
+        _direction = Vector2.Right;
+        _currentMove = Vector2.Zero;
     }
 
     public override void _Ready()
     {
-        _startPosition = Position;
-        _nextPosition  = Position;
+        _direction = _direction.Rotated(GetNode<Node2D>("..").Rotation).Round();
+        _currentMove = _direction * _tileSize;
+        GD.Print(_direction);
     }
+
     public override void _Input(InputEvent @event)
     {
         if (!(@event is InputEventMouse))
@@ -40,36 +42,38 @@ public partial class Head : CharacterBody2D
 
             if (TempDirection != Vector2.Zero)
                 _direction = TempDirection;
+
+            //GD.Print(TempDirection);
         }
     }
 
     private void HeadMovementTimerTimeout()
     {
         var tween = CreateTween();
-        var CurrentDirection = _startPosition.DirectionTo(_nextPosition);
+        var PreviousMove = _currentMove;
+        _currentMove = _direction * _tileSize;
 
-        //if game scene is starting finds proper player direction and prevents starting input
-        if (CurrentDirection == Vector2.Zero)
-        {
-            var GlobalRaycastTarget = Position + GetNode<RayCast2D>("RayCast2D").TargetPosition;
-            _direction              = Position.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
-            _direction.Y            *= -1;
-        }
+        //GD.Print(PreviousMove);
+        //GD.Print(_currentMove);
 
-        //calculate the current and the next position
-        _startPosition = _nextPosition;
-        _nextPosition  = (_direction * _tileSize) + _startPosition;
+        ////if game scene is starting finds proper player direction and prevents starting input
+        //if (CurrentDirection == Vector2.Zero)
+        //{
+        //    var GlobalRaycastTarget = Position + GetNode<RayCast2D>("RayCast2D").TargetPosition;
+        //    _direction = Position.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
+        //    _direction.Y *= -1;
+        //}
 
-        var angle = CurrentDirection.AngleTo(_direction);
+        var angle = PreviousMove.AngleTo(_currentMove);
+        //GD.Print(angle);
 
         if (Math.Abs(angle) > Mathf.DegToRad(90))
         {
-            angle         = 0;
-            _direction    = CurrentDirection;
-            _nextPosition = (CurrentDirection * _tileSize) + _startPosition;
+            angle = 0;
+            _currentMove = PreviousMove;
         }
 
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
-        tween.TweenProperty(this, "position", _nextPosition, 0.25);
+        tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
     }
 }

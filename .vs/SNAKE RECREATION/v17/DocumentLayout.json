@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\godot_projects\\SnakeRecreation\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\head.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|solutionrelative:scenes\\player\\head.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|solutionrelative:scenes\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\head.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|solutionrelative:scenes\\player\\head.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\player\\snakehead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|solutionrelative:scenes\\player\\snakehead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4E67ABB7-35AF-4A43-AD6E-204AEA8C6B09}|Snake Recreation.csproj|d:\\godot_projects\\snakerecreation\\scenes\\levels\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 307,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,33 +42,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "SnakeHead.cs",
+              "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\SnakeHead.cs",
+              "RelativeDocumentMoniker": "Scenes\\Player\\SnakeHead.cs",
+              "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\SnakeHead.cs",
+              "RelativeToolTip": "Scenes\\Player\\SnakeHead.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAmwFUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T14:56:30.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Scenes\\Player\\Player.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Player.cs",
               "RelativeToolTip": "Scenes\\Player\\Player.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCIAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T22:05:54.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Head.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Head.cs",
               "RelativeDocumentMoniker": "Scenes\\Player\\Head.cs",
               "ToolTip": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Player\\Head.cs",
               "RelativeToolTip": "Scenes\\Player\\Head.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwAUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAC0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T21:18:54.217Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "apple.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\consumables\\apple.cs",
               "RelativeDocumentMoniker": "Scenes\\consumables\\apple.cs",
@@ -72,12 +89,11 @@
               "RelativeToolTip": "Scenes\\consumables\\apple.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T22:31:56.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T22:31:56.79Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Game.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Game.cs",
               "RelativeDocumentMoniker": "Scenes\\Levels\\Game.cs",
@@ -85,12 +101,11 @@
               "RelativeToolTip": "Scenes\\Levels\\Game.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T22:37:32.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-09T22:37:32.612Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Menu.cs",
               "DocumentMoniker": "D:\\godot_projects\\SnakeRecreation\\Scenes\\Levels\\Menu.cs",
               "RelativeDocumentMoniker": "Scenes\\Levels\\Menu.cs",

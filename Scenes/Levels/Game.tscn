@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b73jjcb54m3l4" path="res://Scenes/Player/Player.tscn" id="4_crapl"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_k6kkb")
 MenuScene = "res://Scenes/Levels/Menu.tscn"
 
@@ -25,6 +26,7 @@ tile_set = ExtResource("2_y23n3")
 
 [node name="Player" parent="." instance=ExtResource("4_crapl")]
 position = Vector2(232, 200)
+rotation = -1.5708
 
 [connection signal="AppleEaten" from="Player" to="." method="PlayerAppleEaten"]
 [connection signal="Died" from="Player" to="." method="PlayerDied"]
