@@ -25,8 +25,7 @@ tile_set = ExtResource("2_y23n3")
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_crapl")]
-position = Vector2(232, 200)
-rotation = -1.5708
+position = Vector2(328, 265)
 
 [connection signal="AppleEaten" from="Player" to="." method="PlayerAppleEaten"]
 [connection signal="Died" from="Player" to="." method="PlayerDied"]

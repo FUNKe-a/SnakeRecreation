@@ -20,15 +20,8 @@ public partial class Head : CharacterBody2D
 
     public Head()
     {
-        _direction = Vector2.Right;
+        _direction = Vector2.Zero;
         _currentMove = Vector2.Zero;
-    }
-
-    public override void _Ready()
-    {
-        _direction = _direction.Rotated(GetNode<Node2D>("..").Rotation).Round();
-        _currentMove = _direction * _tileSize;
-        GD.Print(_direction);
     }
 
     public override void _Input(InputEvent @event)
@@ -42,8 +35,6 @@ public partial class Head : CharacterBody2D
 
             if (TempDirection != Vector2.Zero)
                 _direction = TempDirection;
-
-            //GD.Print(TempDirection);
         }
     }
 
@@ -51,22 +42,19 @@ public partial class Head : CharacterBody2D
     {
         var tween = CreateTween();
         var PreviousMove = _currentMove;
+
+        //if game scene is starting finds proper player direction and prevents starting input
+        if (PreviousMove == Vector2.Zero)
+        {
+            var Raycast = GetNode<RayCast2D>("RayCast2D");
+            _direction = Raycast.Position.DirectionTo(Raycast.TargetPosition);
+        }
+
         _currentMove = _direction * _tileSize;
 
-        //GD.Print(PreviousMove);
-        //GD.Print(_currentMove);
-
-        ////if game scene is starting finds proper player direction and prevents starting input
-        //if (CurrentDirection == Vector2.Zero)
-        //{
-        //    var GlobalRaycastTarget = Position + GetNode<RayCast2D>("RayCast2D").TargetPosition;
-        //    _direction = Position.DirectionTo(GlobalRaycastTarget).Rotated(-Rotation).Round();
-        //    _direction.Y *= -1;
-        //}
-
         var angle = PreviousMove.AngleTo(_currentMove);
-        //GD.Print(angle);
 
+        //prevents player from going backwards
         if (Math.Abs(angle) > Mathf.DegToRad(90))
         {
             angle = 0;
