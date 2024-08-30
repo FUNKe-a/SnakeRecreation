@@ -5,7 +5,7 @@ public partial class apple : Area2D
 {
     private void OnBodyEntered(Node2D body)
     {
-        if (body.GetType() == typeof(Head))
-            body.GetNode<Player>("..").EatApple();
+        if (body.GetType() == typeof(SnakeHead))
+            body.GetNode<SnakeHead>("../SnakeHead").EatApple();
     }
 }

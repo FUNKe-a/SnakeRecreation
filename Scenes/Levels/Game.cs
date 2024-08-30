@@ -16,7 +16,7 @@ public partial class Game : Node2D
 
     private void PlayerDied()
     {
-        GetTree().ChangeSceneToFile(MenuScene);
+        GetTree().CallDeferred("change_scene_to_file", MenuScene);
     }
     private void CreateNewApple()
     {

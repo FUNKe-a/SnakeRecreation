@@ -5,9 +5,8 @@ using static Godot.Control;
 
 public partial class Head : CharacterBody2D
 {
-
     [Signal]
-    public delegate void DiedEventHandler();
+    public delegate void Died2EventHandler();
 
     int _tileSize = 16;
 
@@ -38,6 +37,12 @@ public partial class Head : CharacterBody2D
         }
     }
 
+    public Vector2 CurrentPlayerDirection()
+    {
+        var Raycast = GetNode<RayCast2D>("RayCast2D");
+        return Raycast.Position.DirectionTo(Raycast.TargetPosition);
+    }
+
     private void HeadMovementTimerTimeout()
     {
         var tween = CreateTween();
@@ -45,10 +50,7 @@ public partial class Head : CharacterBody2D
 
         //if game scene is starting finds proper player direction and prevents starting input
         if (PreviousMove == Vector2.Zero)
-        {
-            var Raycast = GetNode<RayCast2D>("RayCast2D");
-            _direction = Raycast.Position.DirectionTo(Raycast.TargetPosition);
-        }
+            _direction = CurrentPlayerDirection();
 
         _currentMove = _direction * _tileSize;
 

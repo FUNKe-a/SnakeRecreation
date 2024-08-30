@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0clc3enj0xnu"]
+[gd_scene load_steps=5 format=3 uid="uid://d0clc3enj0xnu"]
 
 [ext_resource type="Script" path="res://Scenes/Player/SnakeHead.cs" id="1_3h0lu"]
 [ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Graphics/Snake/Snake head.png" id="2_x2tbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvfq5"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa12v"]
+size = Vector2(10, 10)
 
 [node name="SnakeHead" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,12 +22,21 @@ texture = ExtResource("2_x2tbj")
 shape = SubResource("RectangleShape2D_mvfq5")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-rotation = 3.14159
-target_position = Vector2(0, 16)
+visible = false
+target_position = Vector2(0, -16)
 collision_mask = 9
+hit_from_inside = true
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("RectangleShape2D_oa12v")
 
 [node name="DirectionTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
+[connection signal="body_entered" from="CollisionArea" to="." method="BodyEnteredCollisionArea"]
 [connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]

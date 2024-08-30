@@ -27,20 +27,12 @@ public partial class Player : Node2D
 
     private void PlayerMovementTimerTimeout()
     {
-        if (_obstacleInFront && _obstacleCheck)
-        {
-            EmitSignal(SignalName.Died);
-        }
-
-        if (_obstacleInFront)
-            _obstacleCheck = true;
-
         if (GetNode<RayCast2D>("Head/RayCast2D").IsColliding())
-            _obstacleInFront = true;
-        else
         {
-            _obstacleInFront = false;
-            _obstacleCheck   = false;
+            if (_obstacleInFront)
+                EmitSignal(SignalName.Died);
+            _obstacleInFront = true;
         }
+        else _obstacleInFront = false;
     }
 }
