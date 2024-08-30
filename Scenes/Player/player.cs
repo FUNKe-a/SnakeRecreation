@@ -19,20 +19,15 @@ public partial class Player : Node2D
     public void EatApple()
     {
         EmitSignal(SignalName.AppleEaten);
-
-        //var pog = BodyPart.Instantiate<SnakeBodyPart>();
-        //pog.SetVariables(_startPosition, _nextPosition);
-        //GetNode<Node2D>("BodyParts").CallDeferred("add_child", pog);
     }
 
     private void PlayerMovementTimerTimeout()
     {
-        if (GetNode<RayCast2D>("Head/RayCast2D").IsColliding())
-        {
-            if (_obstacleInFront)
-                EmitSignal(SignalName.Died);
-            _obstacleInFront = true;
-        }
-        else _obstacleInFront = false;
+    }
+
+    private void BodyEnteredCollisionArea(Node2D body)
+    {
+        if (body.GetType() == typeof(TileMapLayer))
+            EmitSignal(SignalName.Died);
     }
 }

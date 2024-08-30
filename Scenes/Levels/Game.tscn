@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Levels/Game.cs" id="1_k6kkb"]
 [ext_resource type="TileSet" uid="uid://dxjmxvhrcuqo7" path="res://Resources/TileSets/GameTiles.tres" id="2_y23n3"]
-[ext_resource type="PackedScene" uid="uid://d0clc3enj0xnu" path="res://Scenes/Player/SnakeHead.tscn" id="3_qudp3"]
+[ext_resource type="PackedScene" uid="uid://b73jjcb54m3l4" path="res://Scenes/Player/Player.tscn" id="3_sdwyw"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, -1)
@@ -24,8 +24,8 @@ tile_set = ExtResource("2_y23n3")
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="SnakeHead" parent="." instance=ExtResource("3_qudp3")]
-position = Vector2(328, 233)
+[node name="Player" parent="." instance=ExtResource("3_sdwyw")]
+position = Vector2(312, 249)
 
-[connection signal="AppleEaten" from="SnakeHead" to="." method="PlayerAppleEaten"]
-[connection signal="Died" from="SnakeHead" to="." method="PlayerDied"]
+[connection signal="AppleEaten" from="Player" to="." method="PlayerAppleEaten"]
+[connection signal="Died" from="Player" to="." method="PlayerDied"]

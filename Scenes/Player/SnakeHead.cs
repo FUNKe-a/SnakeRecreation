@@ -41,6 +41,9 @@ public partial class SnakeHead : CharacterBody2D
     public void EatApple()
     {
         EmitSignal(SignalName.AppleEaten);
+        var part = BodyPart.Instantiate<SnakeBodyPart>();
+        part.Position = GlobalPosition;
+        GetNode<Node2D>("BodyParts").CallDeferred("add_child", part);
     }
 
     public Vector2 CurrentPlayerDirection()

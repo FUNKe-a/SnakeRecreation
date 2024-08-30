@@ -5,9 +5,6 @@ using static Godot.Control;
 
 public partial class Head : CharacterBody2D
 {
-    [Signal]
-    public delegate void Died2EventHandler();
-
     int _tileSize = 16;
 
     Vector2 _direction;
