@@ -25,7 +25,7 @@ public partial class Game : Node2D
         GetNode<Node2D>("Items").AddChild(AppleInst);
     }
 
-    private void PlayerAppleEaten()
+    public void PlayerAppleEaten()
     {
         foreach (var child in GetNode<Node2D>("Items").GetChildren())
             child.QueueFree();

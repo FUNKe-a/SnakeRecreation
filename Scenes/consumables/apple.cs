@@ -3,9 +3,18 @@ using System;
 
 public partial class apple : Area2D
 {
+
+    [Signal]
+    public delegate void AppleEatenEventHandler();
+
+    public override void _Ready()
+    {
+        AppleEaten += () => GetNode<Game>("../..").PlayerAppleEaten();
+    }
+
     private void OnBodyEntered(Node2D body)
     {
-        if (body.GetType() == typeof(Head))
-            (body.GetNode<Node2D>("..") as Player).EatApple();
+        if (body.GetType() == typeof(SnakeHead))
+            EmitSignal(SignalName.AppleEaten);
     }
 }

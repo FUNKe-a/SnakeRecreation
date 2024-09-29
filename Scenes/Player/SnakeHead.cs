@@ -5,8 +5,6 @@ using static Godot.Control;
 public partial class SnakeHead : CharacterBody2D
 {
     [Signal]
-    public delegate void AppleEatenEventHandler();
-    [Signal]
     public delegate void DiedEventHandler();
 
     int _tileSize = 16;
@@ -15,8 +13,6 @@ public partial class SnakeHead : CharacterBody2D
     Vector2 _currentMove;
 
     public bool ObstacleInFront;
-
-    PackedScene BodyPart = GD.Load<PackedScene>("res://Scenes/Player/SnakeBodyPart.tscn");
 
     public SnakeHead()
     {
@@ -36,14 +32,6 @@ public partial class SnakeHead : CharacterBody2D
             if (TempDirection != Vector2.Zero)
                 _direction = TempDirection;
         }
-    }
-
-    public void EatApple()
-    {
-        EmitSignal(SignalName.AppleEaten);
-        var part = BodyPart.Instantiate<SnakeBodyPart>();
-        part.Position = GlobalPosition;
-        GetNode<Node2D>("BodyParts").CallDeferred("add_child", part);
     }
 
     public Vector2 CurrentPlayerDirection()
