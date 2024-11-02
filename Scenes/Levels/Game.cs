@@ -34,18 +34,18 @@ public partial class Game : Node2D
         GetNode<Node2D>("Items").AddChild(AppleInst);
     }
 
-    private void CreateNewBodyPart(float rotation)
+    private void CreateNewBodyPart(float rotation, Vector2 oppositeDirection)
     {
         var BodyPartInst = BodyPart.Instantiate<SnakeBodyPart>();
-        BodyPartInst.Position = GetNode<SnakeHead>("SnakeHead").GlobalPosition;
+        BodyPartInst.Position = GetNode<SnakeHead>("SnakeHead").GlobalPosition + (oppositeDirection * 16);
         BodyPartInst.Rotation = rotation;
         GetNode<Node2D>("BodyParts").AddChild(BodyPartInst);
     }
 
-    private void SnakeHeadPositionState(float rotation)
+    private void SnakeHeadPositionState(float rotation, Vector2 oppositeDirection)
     {
         if (_isAppleEaten)
-            CreateNewBodyPart(rotation);
+            CreateNewBodyPart(rotation, oppositeDirection);
 
         _isAppleEaten = false;
     }

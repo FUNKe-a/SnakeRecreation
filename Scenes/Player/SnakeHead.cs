@@ -7,7 +7,7 @@ public partial class SnakeHead : CharacterBody2D
     [Signal]
     public delegate void DiedEventHandler();
     [Signal]
-    public delegate void PositionStateEventHandler(float rotation);
+    public delegate void PositionStateEventHandler(float rotation, Vector2 oppositeDirection);
 
     int _tileSize = 16;
 
@@ -62,7 +62,7 @@ public partial class SnakeHead : CharacterBody2D
 
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
         tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
-        tween.TweenCallback(Callable.From(() => EmitSignal(SignalName.PositionState, this.Rotation)));
+        tween.TweenCallback(Callable.From(() => EmitSignal(SignalName.PositionState, this.Rotation, _direction * -1)));
     }
 
     private void BodyEnteredCollisionArea(Node2D body)
