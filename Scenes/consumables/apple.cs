@@ -16,5 +16,6 @@ public partial class apple : Area2D
     {
         if (body.GetType() == typeof(SnakeHead))
             EmitSignal(SignalName.AppleEaten);
+        this.QueueFree();
     }
 }

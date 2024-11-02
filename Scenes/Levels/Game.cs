@@ -8,6 +8,14 @@ public partial class Game : Node2D
     string MenuScene = string.Empty;
 
     PackedScene Apple = GD.Load<PackedScene>("res://Scenes/consumables/apple.tscn");
+    PackedScene BodyPart = GD.Load<PackedScene>("res://Scenes/Player/SnakeBodyPart.tscn");
+
+    bool _isAppleEaten;
+
+    public Game()
+    {
+        _isAppleEaten = false;
+    }
 
     public override void _Ready()
     {
@@ -18,6 +26,7 @@ public partial class Game : Node2D
     {
         GetTree().CallDeferred("change_scene_to_file", MenuScene);
     }
+
     private void CreateNewApple()
     {
         var AppleInst = Apple.Instantiate<apple>();
@@ -25,12 +34,26 @@ public partial class Game : Node2D
         GetNode<Node2D>("Items").AddChild(AppleInst);
     }
 
+    private void CreateNewBodyPart(float rotation)
+    {
+        var BodyPartInst = BodyPart.Instantiate<SnakeBodyPart>();
+        BodyPartInst.Position = GetNode<SnakeHead>("SnakeHead").GlobalPosition;
+        BodyPartInst.Rotation = rotation;
+        GetNode<Node2D>("BodyParts").AddChild(BodyPartInst);
+    }
+
+    private void SnakeHeadPositionState(float rotation)
+    {
+        if (_isAppleEaten)
+            CreateNewBodyPart(rotation);
+
+        _isAppleEaten = false;
+    }
+
     public void PlayerAppleEaten()
     {
-        foreach (var child in GetNode<Node2D>("Items").GetChildren())
-            child.QueueFree();
-
-        CallDeferred("CreateNewApple", null);
+        CallDeferred("CreateNewApple");
+        _isAppleEaten = true;
     }
 
     private Vector2I RandomLocation()
