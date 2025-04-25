@@ -26,7 +26,7 @@ public partial class Player : Sprite2D
         _currentMove = _direction * GameInformation.TileSize;
         _action = string.Empty;
         
-        GameBoard.ConnectToAppleEaten(AddBodyPart);
+        GameBoard.AppleEaten += AddBodyPart;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -48,11 +48,12 @@ public partial class Player : Sprite2D
     {
         GD.Print("Adding body part");
         var bodyPart = _packedBodyPart.Instantiate<BodyPart>();
+        
         bodyPart.Name = $"BodyPart_{BodyPartCount}";
         bodyPart.GlobalPosition = GlobalPosition;
         bodyPart.Connection = this;
-        GetNode<Timer>("DirectionTimer").Timeout += bodyPart.DirectionTimerTimeout;
-        //bodyPart.CurrentMove = _currentMove;
+        bodyPart.MovementTimer = GetNode<Timer>("DirectionTimer");
+        
         GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
     }
 
@@ -84,8 +85,6 @@ public partial class Player : Sprite2D
         tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
     }
 
-    public override void _ExitTree()
-    {
-        GameBoard.DisconnectFromAppleEaten(AddBodyPart);
-    }
+    public override void _ExitTree() =>
+        GameBoard.AppleEaten -= AddBodyPart;
 }

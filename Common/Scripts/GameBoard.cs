@@ -44,16 +44,4 @@ public partial class GameBoard : Resource
         
         return false;       
     }
-    
-    public void ConnectToAppleEaten(Action func) =>
-        AppleEaten += () => func();
-    
-    public void DisconnectFromAppleEaten(Action func) =>
-        AppleEaten -= () => func();
-    
-    public void ConnectToPositionBlocked(Action func) =>
-        PositionBlocked += () => func();
-    
-    public void DisconnectFromPositionBlocked(Action func) =>
-        PositionBlocked -= () => func();
 }

@@ -11,8 +11,8 @@ public partial class BoardManager : TileMapLayer
 
     public override void _Ready()
     {
-        GameBoard.ConnectToAppleEaten(CreateNewApple);
-        GameBoard.ConnectToPositionBlocked(ChangeSceneUponDeath);
+        GameBoard.AppleEaten += CreateNewApple;
+        GameBoard.PositionBlocked += ChangeSceneUponDeath;
         
         Tile[,] board = new Tile[GameInformation.TileMapSize.X, GameInformation.TileMapSize.Y];
         for (int i = 0; i < GameInformation.TileMapSize.X; i++)
@@ -64,7 +64,7 @@ public partial class BoardManager : TileMapLayer
 
     public override void _ExitTree()
     {
-        GameBoard.DisconnectFromAppleEaten(CreateNewApple);
-        GameBoard.DisconnectFromPositionBlocked(ChangeSceneUponDeath);
+        GameBoard.AppleEaten -= CreateNewApple;
+        GameBoard.PositionBlocked -= ChangeSceneUponDeath;
     }
 }

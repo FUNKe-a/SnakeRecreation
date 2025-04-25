@@ -2,9 +2,15 @@ using Godot;
 
 public partial class BodyPart : Sprite2D
 {
+    public Timer MovementTimer { get; set; }
     public Player Connection { get; set; }
     public Vector2 PreviousMove { get; set; }
-    
+
+    public override void _Ready()
+    {
+        MovementTimer.Timeout += DirectionTimerTimeout;
+    }
+
     public void DirectionTimerTimeout()
     {
         var tween = CreateTween();
@@ -16,8 +22,6 @@ public partial class BodyPart : Sprite2D
         PreviousMove = Connection.PreviousMove;
     }
 
-    public override void _ExitTree()
-    {
-        
-    }
+    public override void _ExitTree() =>
+        MovementTimer.Timeout -= DirectionTimerTimeout;
 }
