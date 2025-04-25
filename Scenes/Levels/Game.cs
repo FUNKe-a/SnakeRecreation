@@ -5,20 +5,22 @@ using System.Linq;
 public partial class Game : Node2D
 {
     [Export(PropertyHint.File)]
-    string MenuScene = string.Empty;
+    public string MenuScene { get; set; }
+    [Export(PropertyHint.File, "*.tscn")]
+    public string AppleScene { get; set; }
+    [Export(PropertyHint.File, "*.tscn")] 
+    private string BodyPartScene { get; set; }
 
-    PackedScene Apple = GD.Load<PackedScene>("res://Scenes/consumables/apple.tscn");
-    PackedScene BodyPart = GD.Load<PackedScene>("res://Scenes/Player/SnakeBodyPart.tscn");
+    private PackedScene _apple;
+    private PackedScene _bodyPart;
 
     bool _isAppleEaten;
 
-    public Game()
-    {
-        _isAppleEaten = false;
-    }
-
     public override void _Ready()
     {
+        _isAppleEaten = false;
+        _apple = GD.Load<PackedScene>(AppleScene);
+        _bodyPart = GD.Load<PackedScene>(BodyPartScene);
         CreateNewApple();
     }
 
@@ -29,14 +31,15 @@ public partial class Game : Node2D
 
     private void CreateNewApple()
     {
-        var AppleInst = Apple.Instantiate<apple>();
+        var AppleInst = _apple.Instantiate<apple>();
         AppleInst.Position = RandomLocation();
+        AppleInst.ConnectToAppleEaten(PlayerAppleEaten);
         GetNode<Node2D>("Items").AddChild(AppleInst);
     }
 
     private void CreateNewBodyPart(float rotation, Vector2 oppositeDirection)
     {
-        var BodyPartInst = BodyPart.Instantiate<SnakeBodyPart>();
+        var BodyPartInst = _bodyPart.Instantiate<SnakeBodyPart>();
         BodyPartInst.Position = GetNode<SnakeHead>("SnakeHead").GlobalPosition + (oppositeDirection * 16);
         BodyPartInst.Rotation = rotation;
         GetNode<Node2D>("BodyParts").AddChild(BodyPartInst);
