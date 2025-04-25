@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfcn3ng7df4lm" path="res://Scenes/Levels/Game.cs" id="1_7prq5"]
 [ext_resource type="TileSet" uid="uid://dxjmxvhrcuqo7" path="res://Resources/TileSets/GameTiles.tres" id="2_y23n3"]
-[ext_resource type="PackedScene" uid="uid://d0clc3enj0xnu" path="res://Scenes/Player/SnakeHead.tscn" id="3_8hnvy"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/SnakeHead.tscn" id="3_8hnvy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7prq5")
