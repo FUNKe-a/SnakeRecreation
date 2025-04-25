@@ -6,7 +6,7 @@ public partial class Player : Sprite2D
 {
     [Export(PropertyHint.ResourceType, "GameBoard")] 
     public GameBoard GameBoard;
-    [Signal] public delegate void DiedEventHandler();
+    [Signal] public delegate void PlayerMovementAttemptEventHandler(Vector2 position);
 
     string _action;
     Vector2 _direction;
@@ -56,6 +56,8 @@ public partial class Player : Sprite2D
             _currentMove = previousMove;
         }
 
+        EmitSignal(SignalName.PlayerMovementAttempt, _currentMove + Position);
+        
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
         tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
         //tween.TweenCallback(Callable.From(() => EmitSignal(SignalName.PositionState, this.Rotation, _direction * -1));

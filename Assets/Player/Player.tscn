@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Assets/Player/Textures/Snake head.png" id="2_x2tbj"]
 
 [node name="Player" type="Sprite2D"]
-position = Vector2(8, 8)
 texture = ExtResource("2_x2tbj")
 script = ExtResource("1_3h0lu")
 

@@ -6,6 +6,8 @@ public partial class GameBoard : Resource
 {
     [Signal]
     public delegate void AppleEatenEventHandler();
+    [Signal]
+    public delegate void PositionBlockedEventHandler();
     
     public Tile[,] Board { get; set; }
 
@@ -25,10 +27,33 @@ public partial class GameBoard : Resource
         
         return false;
     }
+
+    /// <summary>
+    /// Checks whether the position
+    /// is blocked by a wall
+    /// </summary>
+    /// <param name="location"></param>
+    /// <returns>Whether the position is blocked</returns>
+    public bool IsPositionBlocked(Vector2I location)
+    {
+        if (Board[location.X, location.Y].Type == TileType.Wall)
+        {
+            EmitSignal(SignalName.PositionBlocked);
+            return true;
+        }
+        
+        return false;       
+    }
     
     public void ConnectToAppleEaten(Action func) =>
         AppleEaten += () => func();
     
     public void DisconnectFromAppleEaten(Action func) =>
         AppleEaten -= () => func();
+    
+    public void ConnectToPositionBlocked(Action func) =>
+        PositionBlocked += () => func();
+    
+    public void DisconnectFromPositionBlocked(Action func) =>
+        PositionBlocked -= () => func();
 }
