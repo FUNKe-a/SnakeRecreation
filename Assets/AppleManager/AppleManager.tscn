@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpnohvc763ggj"]
+
+[ext_resource type="Script" uid="uid://bj7mk66vhgs8k" path="res://Assets/AppleManager/AppleManager.cs" id="1_2oq4m"]
+[ext_resource type="Texture2D" uid="uid://cy237xbsec1ys" path="res://Assets/AppleManager/Textures/apple.png" id="1_lt6sg"]
+[ext_resource type="Resource" uid="uid://m0tylb00hi1i" path="res://Resources/GameBoard.tres" id="2_ps2c3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sjf4c"]
+texture = ExtResource("1_lt6sg")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pcqiq"]
+sources/0 = SubResource("TileSetAtlasSource_sjf4c")
+
+[node name="AppleManager" type="TileMapLayer"]
+tile_set = SubResource("TileSet_pcqiq")
+script = ExtResource("1_2oq4m")
+GameBoard = ExtResource("2_ps2c3")

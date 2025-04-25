@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5rox2kogac5u"]
+
+[ext_resource type="Script" uid="uid://dfcn3ng7df4lm" path="res://Levels/GameScene/GameScene.cs" id="1_3mi3p"]
+[ext_resource type="Texture2D" uid="uid://bfhqcmu6tve84" path="res://Common/Textures/Backgrounds/Background.png" id="2_t1y4v"]
+[ext_resource type="PackedScene" uid="uid://bpnohvc763ggj" path="res://Assets/AppleManager/AppleManager.tscn" id="3_tc6iy"]
+[ext_resource type="PackedScene" uid="uid://c74q656vp7o1t" path="res://Assets/Player/Player.tscn" id="4_wtri1"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3mi3p")
+MenuScene = "uid://b4rrccxjay1fo"
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_t1y4v")
+centered = false
+
+[node name="AppleManager" parent="." instance=ExtResource("3_tc6iy")]
+
+[node name="Player" parent="." instance=ExtResource("4_wtri1")]
+position = Vector2(328, 248)

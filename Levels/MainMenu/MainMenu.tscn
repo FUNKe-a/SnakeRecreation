@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4rrccxjay1fo"]
+
+[ext_resource type="Texture2D" uid="uid://bfhqcmu6tve84" path="res://Common/Textures/Backgrounds/Background.png" id="2_mp53d"]
+[ext_resource type="PackedScene" uid="uid://dn262sxr52lm4" path="res://Levels/MainMenu/Elements/ButtonsUI/ButtonsUI.tscn" id="3_g6pvw"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_mp53d")
+offset = Vector2(320, 240)
+
+[node name="UI" parent="." instance=ExtResource("3_g6pvw")]
+PlayScene = "uid://b5rox2kogac5u"

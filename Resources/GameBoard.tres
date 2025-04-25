@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameBoard" load_steps=2 format=3 uid="uid://m0tylb00hi1i"]
+
+[ext_resource type="Script" uid="uid://5wh5qowa87cg" path="res://Common/Scripts/GameBoard.cs" id="1_xwbs4"]
+
+[resource]
+script = ExtResource("1_xwbs4")
+metadata/_custom_type_script = "uid://5wh5qowa87cg"
