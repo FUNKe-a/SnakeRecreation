@@ -13,7 +13,8 @@ public partial class Player : Sprite2D
     string _action;
     Vector2 _direction;
     Vector2 _currentMove;
-    private int BodyPartCount;
+    public Vector2 PreviousMove;
+    int BodyPartCount;
 
     private PackedScene _packedBodyPart;
     
@@ -47,9 +48,10 @@ public partial class Player : Sprite2D
     {
         GD.Print("Adding body part");
         var bodyPart = _packedBodyPart.Instantiate<BodyPart>();
-        bodyPart.Name = $"BodyPart_{BodyPartCount++}";
+        bodyPart.Name = $"BodyPart_{BodyPartCount}";
         bodyPart.GlobalPosition = GlobalPosition - _currentMove;
-        //bodyPart.Direction = _direction;
+        bodyPart.Connection = this;
+        GetNode<Timer>("DirectionTimer").Timeout += bodyPart.DirectionTimerTimeout;
         //bodyPart.CurrentMove = _currentMove;
         GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
     }
@@ -63,17 +65,17 @@ public partial class Player : Sprite2D
     private void DirectionTimerTimeout()
     {
         var tween = CreateTween();
-        var previousMove = _currentMove;
+        PreviousMove = _currentMove;
 
         _currentMove = _direction * GameInformation.TileSize;
         
-        var angle = previousMove.AngleTo(_currentMove);
+        var angle = PreviousMove.AngleTo(_currentMove);
 
         //prevents player from going backwards
         if (Math.Abs(angle) > Mathf.DegToRad(90))
         {
             angle = 0;
-            _currentMove = previousMove;
+            _currentMove = PreviousMove;
         }
 
         EmitSignal(SignalName.PlayerMovementAttempt, _currentMove + Position);
