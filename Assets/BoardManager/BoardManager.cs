@@ -28,6 +28,12 @@ public partial class BoardManager : TileMapLayer
         
         CreateNewApple();
     }
+    
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        if (@event.IsActionReleased("Exit"))
+            GetTree().ChangeSceneToFile(SceneAfterDeath);
+    }
 
     private void OnPlayerMovementAttempt(Vector2 position)
     {

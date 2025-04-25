@@ -1,15 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5rox2kogac5u"]
+[gd_scene load_steps=5 format=3 uid="uid://b5rox2kogac5u"]
 
 [ext_resource type="Texture2D" uid="uid://bfhqcmu6tve84" path="res://Common/Textures/Backgrounds/Background.png" id="2_t1y4v"]
-[ext_resource type="Script" uid="uid://5wh5qowa87cg" path="res://Common/Scripts/GameBoard.cs" id="3_t1y4v"]
 [ext_resource type="PackedScene" uid="uid://bpnohvc763ggj" path="res://Assets/BoardManager/BoardManager.tscn" id="3_tc6iy"]
 [ext_resource type="PackedScene" uid="uid://c74q656vp7o1t" path="res://Assets/Player/Player.tscn" id="4_wtri1"]
 [ext_resource type="Resource" uid="uid://m0tylb00hi1i" path="res://Resources/GameBoard.tres" id="5_tc6iy"]
-
-[sub_resource type="Resource" id="Resource_wtri1"]
-resource_local_to_scene = true
-script = ExtResource("3_t1y4v")
-metadata/_custom_type_script = "uid://5wh5qowa87cg"
 
 [node name="Game" type="Node2D"]
 
@@ -19,10 +13,12 @@ centered = false
 
 [node name="BoardManager" parent="." instance=ExtResource("3_tc6iy")]
 SceneAfterDeath = "uid://b4rrccxjay1fo"
-GameBoard = SubResource("Resource_wtri1")
+GameBoard = ExtResource("5_tc6iy")
 
 [node name="Player" parent="BoardManager" instance=ExtResource("4_wtri1")]
 position = Vector2(328, 264)
 GameBoard = ExtResource("5_tc6iy")
+
+[node name="BodyParts" type="Node2D" parent="BoardManager"]
 
 [connection signal="PlayerMovementAttempt" from="BoardManager/Player" to="BoardManager" method="OnPlayerMovementAttempt"]

@@ -4,6 +4,8 @@ using static Godot.Control;
 
 public partial class Player : Sprite2D
 {
+    [Export(PropertyHint.File, "*.tscn")] 
+    public string BodyPartScene;
     [Export(PropertyHint.ResourceType, "GameBoard")] 
     public GameBoard GameBoard;
     [Signal] public delegate void PlayerMovementAttemptEventHandler(Vector2 position);
@@ -11,27 +13,45 @@ public partial class Player : Sprite2D
     string _action;
     Vector2 _direction;
     Vector2 _currentMove;
+    private int BodyPartCount;
 
+    private PackedScene _packedBodyPart;
+    
     public override void _Ready()
     {
+        BodyPartCount = 0;
+        _packedBodyPart = GD.Load<PackedScene>(BodyPartScene);
         _direction = CurrentPlayerDirection();
         _currentMove = _direction * GameInformation.TileSize;
         _action = string.Empty;
+        
+        GameBoard.ConnectToAppleEaten(AddBodyPart);
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventKey)
         {
-            if (@event.IsActionPressed("up"))
+            if (@event.IsActionPressed("Up"))
                 _direction = Vector2.Up;
-            if (@event.IsActionPressed("down"))
+            if (@event.IsActionPressed("Down"))
                 _direction = Vector2.Down;
-            if (@event.IsActionPressed("left"))
+            if (@event.IsActionPressed("Left"))
                 _direction = Vector2.Left;
-            if (@event.IsActionPressed("right"))
+            if (@event.IsActionPressed("Right"))
                 _direction = Vector2.Right;
         }
+    }
+
+    public void AddBodyPart()
+    {
+        GD.Print("Adding body part");
+        var bodyPart = _packedBodyPart.Instantiate<BodyPart>();
+        bodyPart.Name = $"BodyPart_{BodyPartCount++}";
+        bodyPart.GlobalPosition = GlobalPosition - _currentMove;
+        //bodyPart.Direction = _direction;
+        //bodyPart.CurrentMove = _currentMove;
+        GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
     }
 
     public Vector2 CurrentPlayerDirection()
@@ -60,6 +80,10 @@ public partial class Player : Sprite2D
         
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
         tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
-        //tween.TweenCallback(Callable.From(() => EmitSignal(SignalName.PositionState, this.Rotation, _direction * -1));
+    }
+
+    public override void _ExitTree()
+    {
+        GameBoard.DisconnectFromAppleEaten(AddBodyPart);
     }
 }

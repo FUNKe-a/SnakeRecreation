@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpnohvc763ggj"]
+[gd_scene load_steps=7 format=3 uid="uid://bpnohvc763ggj"]
 
 [ext_resource type="Script" uid="uid://bj7mk66vhgs8k" path="res://Assets/BoardManager/BoardManager.cs" id="1_2oq4m"]
 [ext_resource type="Texture2D" uid="uid://cy237xbsec1ys" path="res://Assets/BoardManager/Textures/apple.png" id="1_lt6sg"]
-[ext_resource type="Resource" uid="uid://m0tylb00hi1i" path="res://Resources/GameBoard.tres" id="2_ps2c3"]
+[ext_resource type="Script" uid="uid://5wh5qowa87cg" path="res://Common/Scripts/GameBoard.cs" id="3_3uju0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sjf4c"]
 texture = ExtResource("1_lt6sg")
@@ -11,7 +11,11 @@ texture = ExtResource("1_lt6sg")
 [sub_resource type="TileSet" id="TileSet_pcqiq"]
 sources/0 = SubResource("TileSetAtlasSource_sjf4c")
 
+[sub_resource type="Resource" id="Resource_t1y4v"]
+script = ExtResource("3_3uju0")
+metadata/_custom_type_script = "uid://5wh5qowa87cg"
+
 [node name="AppleManager" type="TileMapLayer"]
 tile_set = SubResource("TileSet_pcqiq")
 script = ExtResource("1_2oq4m")
-GameBoard = ExtResource("2_ps2c3")
+GameBoard = SubResource("Resource_t1y4v")

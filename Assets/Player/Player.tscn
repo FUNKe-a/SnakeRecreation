@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://c74q656vp7o1t"]
 
 [ext_resource type="Script" uid="uid://criye3bd551mk" path="res://Assets/Player/Player.cs" id="1_3h0lu"]
-[ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Assets/Player/Textures/Snake head.png" id="2_x2tbj"]
+[ext_resource type="Texture2D" uid="uid://dgdreapnbpytk" path="res://Assets/Player/Textures/SnakeHead.png" id="2_x2tbj"]
 
 [node name="Player" type="Sprite2D"]
 texture = ExtResource("2_x2tbj")
 script = ExtResource("1_3h0lu")
-
-[node name="BodyParts" type="Node2D" parent="."]
+BodyPartScene = "uid://b1l3jpxjv4lm"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -16)
