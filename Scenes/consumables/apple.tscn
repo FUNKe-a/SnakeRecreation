@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf8clt8h73v2k"]
 
-[ext_resource type="Script" path="res://Scenes/consumables/apple.cs" id="1_gqaqt"]
+[ext_resource type="Script" uid="uid://cecjmwg6i8iy7" path="res://Scenes/consumables/apple.cs" id="1_gqaqt"]
 [ext_resource type="Texture2D" uid="uid://cy237xbsec1ys" path="res://Graphics/Items/apple.png" id="1_kb4l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fhhv"]

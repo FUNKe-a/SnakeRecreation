@@ -9,6 +9,7 @@ public partial class SnakeHead : CharacterBody2D
     [Signal]
     public delegate void PositionStateEventHandler(float rotation, Vector2 oppositeDirection);
 
+    string action;
     int _tileSize = 16;
 
     Vector2 _direction;
@@ -18,19 +19,26 @@ public partial class SnakeHead : CharacterBody2D
     {
         _direction = Vector2.Zero;
         _currentMove = Vector2.Zero;
+        action = string.Empty;
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _Ready()
     {
-        if (!(@event is InputEventMouse))
+        _direction = CurrentPlayerDirection();
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey)
         {
-            Vector2 TempDirection = Input.GetVector("left", "right", "up", "down");
-
-            if (TempDirection.X != 0 && TempDirection.Y != 0)
-                TempDirection = Vector2.Zero;
-
-            if (TempDirection != Vector2.Zero)
-                _direction = TempDirection;
+            if (@event.IsActionPressed("up"))
+                _direction = Vector2.Up;
+            if (@event.IsActionPressed("down"))
+                _direction = Vector2.Down;
+            if (@event.IsActionPressed("left"))
+                _direction = Vector2.Left;
+            if (@event.IsActionPressed("right"))
+                _direction = Vector2.Right;
         }
     }
 
@@ -44,10 +52,6 @@ public partial class SnakeHead : CharacterBody2D
     {
         var tween = CreateTween();
         var PreviousMove = _currentMove;
-
-        //if game scene is starting finds proper player direction and prevents starting input
-        if (PreviousMove == Vector2.Zero)
-            _direction = CurrentPlayerDirection();
 
         _currentMove = _direction * _tileSize;
 

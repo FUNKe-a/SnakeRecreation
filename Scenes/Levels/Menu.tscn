@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4rrccxjay1fo"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Menu.cs" id="1_ajgne"]
+[ext_resource type="Script" uid="uid://dbb6qj31350fg" path="res://Scenes/Levels/Menu.cs" id="1_ajgne"]
 [ext_resource type="Texture2D" uid="uid://bfhqcmu6tve84" path="res://Graphics/Backgrounds/Background.png" id="1_lwnh0"]
 [ext_resource type="Theme" uid="uid://jxbvgw8ntyy6" path="res://UI/Themes/Menu theme.tres" id="2_x05n0"]
 
@@ -42,6 +42,7 @@ alignment = 1
 selected = 1
 item_count = 3
 popup/item_0/text = "640x480"
+popup/item_0/id = 0
 popup/item_1/text = "1280x960"
 popup/item_1/id = 1
 popup/item_2/text = "2560x1920"
