@@ -49,7 +49,7 @@ public partial class Player : Sprite2D
         GD.Print("Adding body part");
         var bodyPart = _packedBodyPart.Instantiate<BodyPart>();
         bodyPart.Name = $"BodyPart_{BodyPartCount}";
-        bodyPart.GlobalPosition = GlobalPosition - _currentMove;
+        bodyPart.GlobalPosition = GlobalPosition;
         bodyPart.Connection = this;
         GetNode<Timer>("DirectionTimer").Timeout += bodyPart.DirectionTimerTimeout;
         //bodyPart.CurrentMove = _currentMove;
