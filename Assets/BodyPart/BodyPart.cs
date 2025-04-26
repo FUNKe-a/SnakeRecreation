@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class BodyPart : Area2D, Body
+public partial class BodyPart : AnimatableBody2D, Body
 {
     [Signal]
     public delegate void PlayerEnteredBodyPartEventHandler();
@@ -26,6 +26,9 @@ public partial class BodyPart : Area2D, Body
             GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
 
     }
+
+    public void DisableCollision() =>
+        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
 
     public override void _ExitTree() =>
         MovementTimer.Timeout -= DirectionTimerTimeout;

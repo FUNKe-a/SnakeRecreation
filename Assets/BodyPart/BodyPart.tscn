@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2pb"]
 size = Vector2(4, 4)
 
-[node name="BodyPart" type="Area2D"]
-collision_layer = 2
+[node name="BodyPart" type="AnimatableBody2D"]
+collision_layer = 8
+sync_to_physics = false
 script = ExtResource("1_ufqn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,5 +16,3 @@ texture = ExtResource("1_710le")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hb2pb")
-
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

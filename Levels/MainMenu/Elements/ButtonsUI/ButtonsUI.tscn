@@ -7,33 +7,33 @@
 script = ExtResource("1_w3wq7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 592.0
-offset_bottom = 432.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 448.0
+offset_bottom = 288.0
 theme = ExtResource("1_v4d7m")
-theme_override_constants/separation = 95
+theme_override_constants/separation = 56
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "PLAY"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 alignment = 1
-selected = 1
+selected = 2
 item_count = 3
-popup/item_0/text = "640x480"
+popup/item_0/text = "480x320"
 popup/item_0/id = 0
-popup/item_1/text = "1280x960"
+popup/item_1/text = "960x640"
 popup/item_1/id = 1
-popup/item_2/text = "2560x1920"
+popup/item_2/text = "1440x960"
 popup/item_2/id = 2
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "EXIT"
 

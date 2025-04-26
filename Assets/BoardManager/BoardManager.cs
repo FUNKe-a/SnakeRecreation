@@ -29,8 +29,9 @@ public partial class BoardManager : TileMapLayer
     private void OnPlayerMovementAttempt(Vector2 position)
     {
         var boardPos = LocalToMap(position);
-        if (!GameBoard.EatApple(boardPos))
-            GameBoard.IsPositionBlocked(boardPos);
+        GameBoard.EatApple(boardPos);
+        //if (!GameBoard.EatApple(boardPos))
+            //GameBoard.IsPositionBlocked(boardPos);
     }
 
     private Vector2I RandomLocation()

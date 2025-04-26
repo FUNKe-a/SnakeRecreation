@@ -21,10 +21,10 @@ GameInformation="*res://Common/Scripts/Autoload/GameInformation.cs"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_width=480
+window/size/viewport_height=320
 window/size/resizable=false
-window/size/window_width_override=1280
+window/size/window_width_override=1440
 window/size/window_height_override=960
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
@@ -70,7 +70,7 @@ Exit={
 2d_physics/layer_1="player"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="apples"
-2d_physics/layer_4="body part"
+2d_physics/layer_4="Body"
 
 [rendering]
 

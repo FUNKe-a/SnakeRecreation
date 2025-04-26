@@ -2,7 +2,7 @@ using Godot;
 using System;
 using static Godot.Control;
 
-public partial class Player : AnimatableBody2D, Body
+public partial class Player : Area2D, Body
 {
     [Export(PropertyHint.File, "*.tscn")] 
     public string BodyPartScene;
@@ -22,7 +22,6 @@ public partial class Player : AnimatableBody2D, Body
     
     public override void _Ready()
     {
-        SyncToPhysics = false;
         BodyPartCount = 0;
         _packedBodyPart = GD.Load<PackedScene>(BodyPartScene);
         _direction = CurrentPlayerDirection();
@@ -56,7 +55,7 @@ public partial class Player : AnimatableBody2D, Body
         bodyPart.Name = $"BodyPart_{BodyPartCount}";
         if (BodyPartCount > 0)
             lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{BodyPartCount - 1}");
-        else bodyPart.Monitoring = false;
+        else bodyPart.DisableCollision();
         
         bodyPart.GlobalPosition = lastPart.GlobalPosition;
         bodyPart.Connection = lastPart;
@@ -66,6 +65,14 @@ public partial class Player : AnimatableBody2D, Body
         GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
 
         BodyPartCount++;
+    }
+
+    private void OnBodyEntered(Node2D body)
+    {
+        if (body is BodyPart || body is TileMapLayer)
+        {
+            GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
+        }
     }
 
     public Vector2 CurrentPlayerDirection()
