@@ -10,10 +10,12 @@ public partial class Player : Sprite2D, Body
     public GameBoard GameBoard;
     [Signal] public delegate void PlayerMovementAttemptEventHandler(Vector2 position);
 
+    public Vector2 PreviousPosition { get; set; }
+    
     string _action;
     Vector2 _direction;
     Vector2 _currentMove;
-    public Vector2 PreviousMove { get; set; }
+    private Vector2 _previousMove;
     int BodyPartCount;
 
     private PackedScene _packedBodyPart;
@@ -70,24 +72,25 @@ public partial class Player : Sprite2D, Body
 
     private void DirectionTimerTimeout()
     {
+        PreviousPosition = GlobalPosition;
         var tween = CreateTween();
-        PreviousMove = _currentMove;
+        _previousMove = _currentMove;
 
         _currentMove = _direction * GameInformation.TileSize;
         
-        var angle = PreviousMove.AngleTo(_currentMove);
+        var angle = _previousMove.AngleTo(_currentMove);
 
         //prevents player from going backwards
         if (Math.Abs(angle) > Mathf.DegToRad(90))
         {
             angle = 0;
-            _currentMove = PreviousMove;
+            _currentMove = _previousMove;
         }
 
-        EmitSignal(SignalName.PlayerMovementAttempt, _currentMove + Position);
+        EmitSignal(SignalName.PlayerMovementAttempt, _currentMove + GlobalPosition);
         
         tween.TweenProperty(this, "rotation", angle, 0.25).AsRelative();
-        tween.TweenProperty(this, "position", _currentMove, 0.25).AsRelative();
+        tween.TweenProperty(this, "global_position", PreviousPosition + _currentMove, 0.25);
     }
 
     public override void _ExitTree() =>
