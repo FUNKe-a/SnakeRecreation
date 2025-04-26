@@ -28,13 +28,6 @@ public partial class BodyPart : Sprite2D, Body
         PreviousPosition = GlobalPosition;
     }
 
-    private void OnBodyEntered(Node2D body)
-    {
-        //if (body is Player playerNode)
-            //GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
-
-    }
-
     public override void _ExitTree() =>
         MovementTimer.Timeout -= DirectionTimerTimeout;
 }
