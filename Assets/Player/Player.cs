@@ -2,7 +2,7 @@ using Godot;
 using System;
 using static Godot.Control;
 
-public partial class Player : Sprite2D
+public partial class Player : Sprite2D, Body
 {
     [Export(PropertyHint.File, "*.tscn")] 
     public string BodyPartScene;
@@ -13,7 +13,7 @@ public partial class Player : Sprite2D
     string _action;
     Vector2 _direction;
     Vector2 _currentMove;
-    public Vector2 PreviousMove;
+    public Vector2 PreviousMove { get; set; }
     int BodyPartCount;
 
     private PackedScene _packedBodyPart;
@@ -46,15 +46,20 @@ public partial class Player : Sprite2D
 
     public void AddBodyPart()
     {
-        GD.Print("Adding body part");
         var bodyPart = _packedBodyPart.Instantiate<BodyPart>();
+        var timer = GetNode<Timer>("DirectionTimer");
+        Body lastPart = this;
         
         bodyPart.Name = $"BodyPart_{BodyPartCount}";
-        bodyPart.GlobalPosition = GlobalPosition;
-        bodyPart.Connection = this;
-        bodyPart.MovementTimer = GetNode<Timer>("DirectionTimer");
+        if (BodyPartCount > 0)
+            lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{BodyPartCount - 1}");
         
+        bodyPart.GlobalPosition = lastPart.GlobalPosition;
+        bodyPart.Connection = lastPart;
+        bodyPart.MovementTimer = timer;
         GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
+
+        BodyPartCount++;
     }
 
     public Vector2 CurrentPlayerDirection()

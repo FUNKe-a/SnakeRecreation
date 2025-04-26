@@ -1,15 +1,13 @@
 using Godot;
 
-public partial class BodyPart : Sprite2D
+public partial class BodyPart : Sprite2D, Body
 {
     public Timer MovementTimer { get; set; }
-    public Player Connection { get; set; }
+    public Body Connection { get; set; }
     public Vector2 PreviousMove { get; set; }
 
-    public override void _Ready()
-    {
+    public override void _Ready() =>
         MovementTimer.Timeout += DirectionTimerTimeout;
-    }
 
     public void DirectionTimerTimeout()
     {
