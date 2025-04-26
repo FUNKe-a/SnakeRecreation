@@ -7,7 +7,7 @@ public partial class GameBoard : Resource
     [Signal]
     public delegate void AppleEatenEventHandler();
     [Signal]
-    public delegate void PositionBlockedEventHandler();
+    public delegate void WallHitEventHandler();
     
     public Tile[,] Board { get; set; }
 
@@ -38,7 +38,7 @@ public partial class GameBoard : Resource
     {
         if (Board[location.X, location.Y].Type == TileType.Wall)
         {
-            EmitSignal(SignalName.PositionBlocked);
+            EmitSignal(SignalName.WallHit);
             return true;
         }
         

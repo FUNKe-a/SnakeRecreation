@@ -5,6 +5,7 @@ public partial class GameInformation : Node
 {
     public static Vector2I TileMapSize;
     public static int TileSize = 16;
+    public static string MainMenu = @"res://Levels/MainMenu/MainMenu.tscn";
     
     public override void _Ready()
     {

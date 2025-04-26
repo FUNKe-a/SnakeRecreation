@@ -3,16 +3,13 @@ using System;
 
 public partial class BoardManager : TileMapLayer
 {
-    [Export(PropertyHint.File, "*.tscn")] 
-    public string SceneAfterDeath { get; set; }
-
     [Export(PropertyHint.ResourceType, "GameBoard")]
     public GameBoard GameBoard { get; set; }
-
+    
     public override void _Ready()
     {
         GameBoard.AppleEaten += CreateNewApple;
-        GameBoard.PositionBlocked += ChangeSceneUponDeath;
+        GameBoard.WallHit += ChangeSceneUponDeath;
         
         Tile[,] board = new Tile[GameInformation.TileMapSize.X, GameInformation.TileMapSize.Y];
         for (int i = 0; i < GameInformation.TileMapSize.X; i++)
@@ -27,12 +24,6 @@ public partial class BoardManager : TileMapLayer
         GameBoard.Board = board;
         
         CreateNewApple();
-    }
-    
-    public override void _UnhandledKeyInput(InputEvent @event)
-    {
-        if (@event.IsActionReleased("Exit"))
-            GetTree().ChangeSceneToFile(SceneAfterDeath);
     }
 
     private void OnPlayerMovementAttempt(Vector2 position)
@@ -60,11 +51,11 @@ public partial class BoardManager : TileMapLayer
     }
 
     private void ChangeSceneUponDeath() =>
-        GetTree().ChangeSceneToFile(SceneAfterDeath);
+        GetTree().ChangeSceneToFile(GameInformation.MainMenu);
 
     public override void _ExitTree()
     {
         GameBoard.AppleEaten -= CreateNewApple;
-        GameBoard.PositionBlocked -= ChangeSceneUponDeath;
+        GameBoard.WallHit -= ChangeSceneUponDeath;
     }
 }
