@@ -9,7 +9,7 @@ public partial class BoardManager : TileMapLayer
     public override void _Ready()
     {
         GameBoard.AppleEaten += CreateNewApple;
-        GameBoard.WallHit += ChangeSceneUponDeath;
+        GameBoard.PositionBlocked += ChangeSceneUponDeath;
         
         Tile[,] board = new Tile[GameInformation.TileMapSize.X, GameInformation.TileMapSize.Y];
         for (int i = 0; i < GameInformation.TileMapSize.X; i++)
@@ -25,6 +25,12 @@ public partial class BoardManager : TileMapLayer
         
         CreateNewApple();
     }
+
+    public void OnBodyPartMovementStarted(Vector2 position) =>
+        GameBoard.UpdateSnakePosition(LocalToMap(position));
+
+    public void OnBodyPartMovementFinished(Vector2 position) =>
+        GameBoard.RemoveSnakePosition(LocalToMap(position));
 
     private void OnPlayerMovementAttempt(Vector2 position)
     {
@@ -45,9 +51,18 @@ public partial class BoardManager : TileMapLayer
     private void CreateNewApple()
     { 
         Clear();
-        var applePos = RandomLocation();
-        GameBoard.Board[applePos.X, applePos.Y].Type = TileType.Apple;
-        SetCell(applePos, 0, new Vector2I(0, 0));
+        bool appleAdded = false;
+        while (!appleAdded)
+        {
+            var applePos = RandomLocation();
+            if (GameBoard.Board[applePos.X, applePos.Y].Type != TileType.Wall &&
+                GameBoard.Board[applePos.X, applePos.Y].Type != TileType.Snake)
+            {
+                GameBoard.Board[applePos.X, applePos.Y].Type = TileType.Apple;
+                SetCell(applePos, 0, new Vector2I(0, 0));
+                appleAdded = true;
+            }
+        }
     }
 
     private void ChangeSceneUponDeath() =>
@@ -56,6 +71,6 @@ public partial class BoardManager : TileMapLayer
     public override void _ExitTree()
     {
         GameBoard.AppleEaten -= CreateNewApple;
-        GameBoard.WallHit -= ChangeSceneUponDeath;
+        GameBoard.PositionBlocked -= ChangeSceneUponDeath;
     }
 }

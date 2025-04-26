@@ -7,7 +7,7 @@ public partial class GameBoard : Resource
     [Signal]
     public delegate void AppleEatenEventHandler();
     [Signal]
-    public delegate void WallHitEventHandler();
+    public delegate void PositionBlockedEventHandler();
     
     public Tile[,] Board { get; set; }
 
@@ -36,12 +36,18 @@ public partial class GameBoard : Resource
     /// <returns>Whether the position is blocked</returns>
     public bool IsPositionBlocked(Vector2I location)
     {
-        if (Board[location.X, location.Y].Type == TileType.Wall)
+        if (Board[location.X, location.Y].Type == TileType.Wall || Board[location.X, location.Y].Type == TileType.Snake)
         {
-            EmitSignal(SignalName.WallHit);
+            EmitSignal(SignalName.PositionBlocked);
             return true;
         }
         
         return false;       
     }
+
+    public void UpdateSnakePosition(Vector2I location) =>
+        Board[location.X, location.Y].Type = TileType.Snake;
+
+    public void RemoveSnakePosition(Vector2I location) =>
+        Board[location.X, location.Y].Type = TileType.Background;
 }
