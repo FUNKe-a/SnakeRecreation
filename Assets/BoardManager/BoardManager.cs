@@ -3,60 +3,45 @@ using System;
 
 public partial class BoardManager : TileMapLayer
 {
-    [Export(PropertyHint.ResourceType, "GameBoard")]
-    public GameBoard GameBoard { get; set; }
+    [Export(PropertyHint.File, "*.tscn")] 
+    public string ConsumableItemScene;
+
+    private PackedScene _consumableItemScene;
     
     public override void _Ready()
     {
-        GameBoard.AppleEaten += CreateNewApple;
-        GameBoard.WallHit += ChangeSceneUponDeath;
-        
-        Tile[,] board = new Tile[GameInformation.TileMapSize.X, GameInformation.TileMapSize.Y];
-        for (int i = 0; i < GameInformation.TileMapSize.X; i++)
-        {
-            for (int j = 0; j < GameInformation.TileMapSize.Y; j++)
-            {
-                if (i == 0 || i == GameInformation.TileMapSize.X - 1 || j == 0 || j == GameInformation.TileMapSize.Y - 1)
-                    board[i, j] = new Tile(TileType.Wall);
-                else board[i, j] = new Tile(TileType.Background);
-            }
-        }
-        GameBoard.Board = board;
-        
+        _consumableItemScene = GD.Load<PackedScene>(ConsumableItemScene);
+        GetNode<Player>("Player").PlayerAppleEaten += CreateNewApple;
         CreateNewApple();
     }
 
-    private void OnPlayerMovementAttempt(Vector2 position)
-    {
-        var boardPos = LocalToMap(position);
-        GameBoard.EatApple(boardPos);
-        //if (!GameBoard.EatApple(boardPos))
-            //GameBoard.IsPositionBlocked(boardPos);
-    }
-
-    private Vector2I RandomLocation()
+    public Vector2I RandomLocation()
     {
         var random = new RandomNumberGenerator();
+        random.Randomize();
+        
         return new Vector2I(
-            random.RandiRange(1, GameInformation.TileMapSize.X - 2), 
-            random.RandiRange(1, GameInformation.TileMapSize.Y - 2)
-        );
+            random.RandiRange(16, (GameInformation.TileMapSize.X - 1) * 16),
+            random.RandiRange(16, (GameInformation.TileMapSize.Y + 1) * 16)
+        ).Snapped(new Vector2I(16, 16)) + new Vector2I(GameInformation.TileSize / 2, GameInformation.TileSize / 2);
     }
     
     private void CreateNewApple()
-    { 
-        Clear();
+    {
+        var apple = _consumableItemScene.Instantiate<Apple>();
         var applePos = RandomLocation();
-        GameBoard.Board[applePos.X, applePos.Y].Type = TileType.Apple;
-        SetCell(applePos, 0, new Vector2I(0, 0));
+        apple.GlobalPosition = applePos;
+        AddChild(apple);
+        while (apple.IsAppleOnSnakeBodyPart())
+        {
+            applePos = RandomLocation();
+            apple.GlobalPosition = applePos;
+        }
     }
+
+    private void DeleteOldApple(Apple apple) =>
+        apple.QueueFree();
 
     private void ChangeSceneUponDeath() =>
         GetTree().ChangeSceneToFile(GameInformation.MainMenu);
-
-    public override void _ExitTree()
-    {
-        GameBoard.AppleEaten -= CreateNewApple;
-        GameBoard.WallHit -= ChangeSceneUponDeath;
-    }
 }

@@ -6,9 +6,8 @@ public partial class Player : Area2D, Body
 {
     [Export(PropertyHint.File, "*.tscn")] 
     public string BodyPartScene;
-    [Export(PropertyHint.ResourceType, "GameBoard")] 
-    public GameBoard GameBoard;
-    [Signal] public delegate void PlayerMovementAttemptEventHandler(Vector2 position);
+    
+    [Signal] public delegate void PlayerAppleEatenEventHandler();
 
     public Vector2 PreviousPosition { get; set; }
     
@@ -16,19 +15,17 @@ public partial class Player : Area2D, Body
     Vector2 _direction;
     Vector2 _currentMove;
     private Vector2 _previousMove;
-    int BodyPartCount;
+    int _bodyPartCount;
 
     private PackedScene _packedBodyPart;
     
     public override void _Ready()
     {
-        BodyPartCount = 0;
+        _bodyPartCount = 0;
         _packedBodyPart = GD.Load<PackedScene>(BodyPartScene);
         _direction = CurrentPlayerDirection();
         _currentMove = _direction * GameInformation.TileSize;
         _action = string.Empty;
-        
-        GameBoard.AppleEaten += AddBodyPart;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -52,26 +49,29 @@ public partial class Player : Area2D, Body
         var timer = GetNode<Timer>("DirectionTimer");
         Body lastPart = this;
         
-        bodyPart.Name = $"BodyPart_{BodyPartCount}";
-        if (BodyPartCount > 0)
-            lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{BodyPartCount - 1}");
+        bodyPart.Name = $"BodyPart_{_bodyPartCount}";
+        if (_bodyPartCount > 0)
+            lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{_bodyPartCount - 1}");
         else bodyPart.DisableCollision();
         
         bodyPart.GlobalPosition = lastPart.GlobalPosition;
         bodyPart.Connection = lastPart;
         bodyPart.MovementTimer = timer;
         
-            
         GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
 
-        BodyPartCount++;
+        _bodyPartCount++;
     }
 
     private void OnBodyEntered(Node2D body)
     {
         if (body is BodyPart || body is TileMapLayer)
-        {
             GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
+        else if (body is Apple apple)
+        {
+            AddBodyPart();
+            apple.QueueFree();
+            EmitSignal(SignalName.PlayerAppleEaten);
         }
     }
 
@@ -97,13 +97,8 @@ public partial class Player : Area2D, Body
             angle = 0;
             _currentMove = _previousMove;
         }
-
-        EmitSignal(SignalName.PlayerMovementAttempt, _currentMove + GlobalPosition);
         
         tween.TweenProperty(this, "rotation", angle, 0.15).AsRelative();
         tween.TweenProperty(this, "global_position", PreviousPosition + _currentMove, 0.15);
     }
-
-    public override void _ExitTree() =>
-        GameBoard.AppleEaten -= AddBodyPart;
 }
