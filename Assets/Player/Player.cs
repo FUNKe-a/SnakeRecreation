@@ -60,6 +60,8 @@ public partial class Player : Area2D, Body
 
         GetNode<Node2D>("../BodyParts").CallDeferred(MethodName.AddChild, bodyPart);
         _bodyPartCount++;
+        if (_bodyPartCount == 293)
+            GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
     }
 
     private void OnAreaEntered(Area2D area)

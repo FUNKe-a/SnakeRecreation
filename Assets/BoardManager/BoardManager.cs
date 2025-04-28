@@ -52,10 +52,4 @@ public partial class BoardManager : TileMapLayer
             GD.Print(e.Message);
         }
     }
-
-    private void DeleteOldApple(Apple apple) =>
-        apple.QueueFree();
-
-    private void ChangeSceneUponDeath() =>
-        GetTree().ChangeSceneToFile(GameInformation.MainMenu);
 }
