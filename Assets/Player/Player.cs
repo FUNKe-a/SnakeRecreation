@@ -57,22 +57,26 @@ public partial class Player : Area2D, Body
         bodyPart.GlobalPosition = lastPart.GlobalPosition;
         bodyPart.Connection = lastPart;
         bodyPart.MovementTimer = timer;
-        
-        GetNode<Node2D>("../BodyParts").AddChild(bodyPart);
 
+        GetNode<Node2D>("../BodyParts").CallDeferred(MethodName.AddChild, bodyPart);
         _bodyPartCount++;
+    }
+
+    private void OnAreaEntered(Area2D area)
+    {
+        if (area is Apple apple)
+        {
+            EmitSignal(SignalName.PlayerAppleEaten);
+            AddBodyPart();
+            apple.QueueFree();
+        }
     }
 
     private void OnBodyEntered(Node2D body)
     {
         if (body is BodyPart || body is TileMapLayer)
             GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
-        else if (body is Apple apple)
-        {
-            AddBodyPart();
-            apple.QueueFree();
-            EmitSignal(SignalName.PlayerAppleEaten);
-        }
+
     }
 
     public Vector2 CurrentPlayerDirection()

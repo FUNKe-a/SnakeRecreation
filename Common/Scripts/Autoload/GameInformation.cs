@@ -11,9 +11,9 @@ public partial class GameInformation : Node
     public override void _Ready()
     {
         Resolution = GetViewport().GetVisibleRect().Size;
-        var XBoundary = (int)Math.Ceiling(Resolution.X / 16f);
-        var YBoundary = (int)Math.Ceiling(Resolution.Y / 16f);
+        var xBoundary = (int)Math.Ceiling(Resolution.X / 16f);
+        var yBoundary = (int)Math.Ceiling(Resolution.Y / 16f);
        
-        TileMapSize = new Vector2I(XBoundary, YBoundary);
+        TileMapSize = new Vector2I(xBoundary, yBoundary);
     }
 }

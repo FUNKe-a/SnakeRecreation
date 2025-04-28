@@ -20,16 +20,6 @@ public partial class BodyPart : AnimatableBody2D, Body
         PreviousPosition = GlobalPosition;
     }
 
-    private void OnBodyEntered(Node2D body)
-    {
-        if (body is Player playerNode)
-            GetTree().CallDeferred("change_scene_to_file", GameInformation.MainMenu);
-
-    }
-
     public void DisableCollision() =>
         GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
-
-    public override void _ExitTree() =>
-        MovementTimer.Timeout -= DirectionTimerTimeout;
 }

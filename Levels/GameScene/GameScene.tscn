@@ -27,7 +27,7 @@ tile_set = null
 ConsumableItemScene = "uid://3g3dgmp457oj"
 
 [node name="Player" parent="BoardManager" instance=ExtResource("4_wtri1")]
-position = Vector2(328, 264)
+position = Vector2(264, 184)
 BodyPartScene = "uid://cunij4da6dish"
 
 [node name="BodyParts" type="Node2D" parent="BoardManager"]

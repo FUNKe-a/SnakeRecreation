@@ -13,7 +13,7 @@ script = ExtResource("1_3h0lu")
 BodyPartScene = "uid://b1l3jpxjv4lm"
 
 [node name="DirectionTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.31
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -27,5 +27,8 @@ texture = ExtResource("2_x2tbj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t6mta")
 
+[node name="BodyParts" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="timeout" from="DirectionTimer" to="." method="DirectionTimerTimeout"]

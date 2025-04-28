@@ -8,6 +8,7 @@ size = Vector2(4, 4)
 
 [node name="BodyPart" type="AnimatableBody2D"]
 collision_layer = 8
+collision_mask = 5
 sync_to_physics = false
 script = ExtResource("1_ufqn3")
 

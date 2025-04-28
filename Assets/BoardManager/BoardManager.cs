@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class BoardManager : TileMapLayer
 {
@@ -7,9 +8,12 @@ public partial class BoardManager : TileMapLayer
     public string ConsumableItemScene;
 
     private PackedScene _consumableItemScene;
+    private RandomNumberGenerator _random;
     
     public override void _Ready()
     {
+        _random = new RandomNumberGenerator();
+        _random.Randomize();
         _consumableItemScene = GD.Load<PackedScene>(ConsumableItemScene);
         GetNode<Player>("Player").PlayerAppleEaten += CreateNewApple;
         CreateNewApple();
@@ -17,25 +21,30 @@ public partial class BoardManager : TileMapLayer
 
     public Vector2I RandomLocation()
     {
-        var random = new RandomNumberGenerator();
-        random.Randomize();
-        
         return new Vector2I(
-            random.RandiRange(16, (GameInformation.TileMapSize.X - 1) * 16),
-            random.RandiRange(16, (GameInformation.TileMapSize.Y + 1) * 16)
-        ).Snapped(new Vector2I(16, 16)) + new Vector2I(GameInformation.TileSize / 2, GameInformation.TileSize / 2);
+            _random.RandiRange(1, GameInformation.TileMapSize.X - 2),
+            _random.RandiRange(1, GameInformation.TileMapSize.Y - 2)
+        ) * GameInformation.TileSize + new Vector2I(GameInformation.TileSize / 2, GameInformation.TileSize / 2);
     }
     
-    private void CreateNewApple()
+    private async void CreateNewApple()
     {
-        var apple = _consumableItemScene.Instantiate<Apple>();
-        var applePos = RandomLocation();
-        apple.GlobalPosition = applePos;
-        AddChild(apple);
-        while (apple.IsAppleOnSnakeBodyPart())
+        try
         {
-            applePos = RandomLocation();
+            var apple = _consumableItemScene.Instantiate<Apple>();
+            var applePos = RandomLocation();
             apple.GlobalPosition = applePos;
+            CallDeferred(MethodName.AddChild, apple);
+            await ToSignal(GetTree(), "process_frame");
+            while (apple.IsAppleOnSnakeBodyPart())
+            {
+                applePos = RandomLocation();
+                apple.GlobalPosition = applePos;
+            }
+        }
+        catch (Exception e)
+        {
+            GD.Print(e.Message);
         }
     }
 
