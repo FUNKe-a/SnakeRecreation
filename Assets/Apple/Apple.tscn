@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cy237xbsec1ys" path="res://Assets/Apple/Textures/apple.png" id="1_vfaaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc18s"]
-size = Vector2(10, 10)
+size = Vector2(16, 16)
 
 [node name="Apple" type="Area2D"]
 collision_layer = 4

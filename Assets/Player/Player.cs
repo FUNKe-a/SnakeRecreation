@@ -104,5 +104,6 @@ public partial class Player : Area2D, Body
         
         tween.TweenProperty(this, "rotation", angle, 0.15).AsRelative();
         tween.TweenProperty(this, "global_position", PreviousPosition + _currentMove, 0.15);
+        GlobalPosition = GlobalPosition.Floor();
     }
 }

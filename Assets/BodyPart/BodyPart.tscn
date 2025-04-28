@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://0fb3rrmotu2x" path="res://Assets/BodyPart/BodyPart.cs" id="1_ufqn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2pb"]
-size = Vector2(4, 4)
+size = Vector2(10, 10)
 
 [node name="BodyPart" type="AnimatableBody2D"]
 collision_layer = 8
