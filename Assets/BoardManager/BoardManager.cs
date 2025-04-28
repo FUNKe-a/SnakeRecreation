@@ -32,15 +32,20 @@ public partial class BoardManager : TileMapLayer
         try
         {
             var apple = _consumableItemScene.Instantiate<Apple>();
-            var applePos = RandomLocation();
-            apple.GlobalPosition = applePos;
+            apple.Name = "Apple";
+            apple.Visible = false;
+            
             CallDeferred(MethodName.AddChild, apple);
-            await ToSignal(GetTree(), "process_frame");
-            while (apple.IsAppleOnSnakeBodyPart())
+            await ToSignal(apple, "tree_entered");
+            
+            bool isAppleOnSnake;
+            do
             {
-                applePos = RandomLocation();
+                var applePos = RandomLocation();
                 apple.GlobalPosition = applePos;
-            }
+                isAppleOnSnake = await apple.IsAppleOnSnake();
+            } while (isAppleOnSnake);
+            apple.Visible = true;
         }
         catch (Exception e)
         {

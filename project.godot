@@ -21,13 +21,14 @@ GameInformation="*res://Common/Scripts/Autoload/GameInformation.cs"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=320
+window/size/viewport_width=368
+window/size/viewport_height=256
 window/size/resizable=false
-window/size/window_width_override=1440
-window/size/window_height_override=960
+window/size/window_width_override=1104
+window/size/window_height_override=768
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -71,6 +72,7 @@ Exit={
 2d_physics/layer_2="walls"
 2d_physics/layer_3="apples"
 2d_physics/layer_4="Body"
+2d_physics/layer_5="bodySpawn"
 
 [rendering]
 

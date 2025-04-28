@@ -7,9 +7,19 @@ public partial class ButtonsUi : CanvasLayer
     public string PlayScene;
 
     OptionButton _options;
-    
-    public override void _Ready() =>
+
+    public override void _Ready()
+    {
         _options = GetNode<OptionButton>("VBoxContainer/OptionButton");
+        var id = 2;
+        if (GetWindow().Size == new Vector2(368, 256))
+            id = 0;
+        if (GetWindow().Size == new Vector2(736, 512))
+            id = 1;
+        if (GetWindow().Size == new Vector2(1104, 768))
+            id = 2; 
+        _options.Select(id);
+    }
     
     private void OnOptionButtonItemSelected(int index)
     {

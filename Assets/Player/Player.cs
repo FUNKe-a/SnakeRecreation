@@ -52,7 +52,7 @@ public partial class Player : Area2D, Body
         bodyPart.Name = $"BodyPart_{_bodyPartCount}";
         if (_bodyPartCount > 0)
             lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{_bodyPartCount - 1}");
-        else bodyPart.DisableCollision();
+        else bodyPart.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         
         bodyPart.GlobalPosition = lastPart.GlobalPosition;
         bodyPart.Connection = lastPart;
@@ -102,8 +102,8 @@ public partial class Player : Area2D, Body
             _currentMove = _previousMove;
         }
         
-        tween.TweenProperty(this, "rotation", angle, 0.15).AsRelative();
-        tween.TweenProperty(this, "global_position", PreviousPosition + _currentMove, 0.15);
+        tween.TweenProperty(this, "rotation", angle, 0.1).AsRelative();
+        tween.TweenProperty(this, "global_position", PreviousPosition + _currentMove, 0.1);
         GlobalPosition = GlobalPosition.Floor();
     }
 }

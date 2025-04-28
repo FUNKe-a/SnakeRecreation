@@ -15,8 +15,8 @@ public partial class BodyPart : AnimatableBody2D, Body
     {
         var tween = CreateTween();
         
-        tween.TweenProperty(this, "rotation", 0, 0.15);
-        tween.TweenProperty(this, "global_position", Connection.PreviousPosition, 0.15);
+        tween.TweenProperty(this, "rotation", 0, 0.1);
+        tween.TweenProperty(this, "global_position", Connection.PreviousPosition, 0.1);
         PreviousPosition = GlobalPosition;
         GlobalPosition = GlobalPosition.Floor();
     }

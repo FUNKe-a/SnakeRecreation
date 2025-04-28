@@ -9,11 +9,12 @@ size = Vector2(4, 4)
 [node name="Player" type="Area2D"]
 z_index = 1
 collision_mask = 14
+input_pickable = false
 script = ExtResource("1_3h0lu")
 BodyPartScene = "uid://b1l3jpxjv4lm"
 
 [node name="DirectionTimer" type="Timer" parent="."]
-wait_time = 0.31
+wait_time = 0.22
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
