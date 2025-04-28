@@ -52,7 +52,7 @@ public partial class Player : Area2D, Body
         bodyPart.Name = $"BodyPart_{_bodyPartCount}";
         if (_bodyPartCount > 0)
             lastPart = GetNode<BodyPart>($"../BodyParts/BodyPart_{_bodyPartCount - 1}");
-        else bodyPart.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+        else bodyPart.DisableCollision();
         
         bodyPart.GlobalPosition = lastPart.GlobalPosition;
         bodyPart.Connection = lastPart;
