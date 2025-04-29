@@ -18,9 +18,10 @@ wait_time = 0.22
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
 target_position = Vector2(0, -16)
 collision_mask = 9
-hit_from_inside = true
+collide_with_bodies = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x2tbj")
