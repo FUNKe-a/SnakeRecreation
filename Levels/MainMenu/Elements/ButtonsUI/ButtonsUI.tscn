@@ -24,13 +24,15 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 alignment = 1
 selected = 2
-item_count = 3
+item_count = 4
 popup/item_0/text = "368x256"
 popup/item_0/id = 0
 popup/item_1/text = "736x512"
 popup/item_1/id = 1
 popup/item_2/text = "1104x768"
 popup/item_2/id = 2
+popup/item_3/text = "1472x1024"
+popup/item_3/id = 3
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
