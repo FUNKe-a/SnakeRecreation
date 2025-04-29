@@ -24,6 +24,7 @@ tile_set = SubResource("TileSet_tc6iy")
 
 [node name="BoardManager" parent="." instance=ExtResource("3_tc6iy")]
 tile_set = null
+ConsumableItemScene = "uid://3g3dgmp457oj"
 
 [node name="Player" parent="BoardManager" instance=ExtResource("4_wtri1")]
 position = Vector2(184, 136)
